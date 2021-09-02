@@ -1,0 +1,7 @@
+require 'options'
+require 'commands'
+require 'mappings'
+require 'plugins'
+require 'formatter'
+require 'statusline'
+require 'new-component'
