@@ -6,7 +6,12 @@ local function format_refs(references)
   local formatted = {}
 
   for i, ref in ipairs(references) do
-    local format_uri = string.gsub(ref.uri, cwd, ''):gsub('file:///', '')
+    local format_uri
+    if vim.fn.stridx(ref.uri, cwd) ~= -1 then
+      format_uri = string.gsub(ref.uri, cwd, ''):gsub('file:///', '')
+    else
+      format_uri = string.gsub(ref.url, 'file://', '')
+    end
     local range = ref.range
     local sline = range.start.line+1
     formatted[i] = format_uri.." l."..sline
@@ -50,7 +55,7 @@ function M.select_from_ref()
   local line_nb = vim.split(line[2], '%.')[2]
   M.close()
   vim.cmd("e "..file)
-  api.nvim_win_set_cursor(main_win, { [1] = tonumber(line_nb), [2] = 0})
+  api.nvim_win_set_cursor(main_win, { [1] = tonumber(line_nb), [2] = 0 })
 end
 
 function M.references_cb(err, _, results)

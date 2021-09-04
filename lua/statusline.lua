@@ -136,10 +136,10 @@ local func = [[
 api.nvim_exec(func, '')
 
 -- needed to avoid colors getting overriden by blue-moon because packer is async and this runs before otherwise
-vim.defer_fn(function()
+vim.schedule(function()
   for name, c in pairs(getColors()) do
     vim.cmd('hi! def '..name..' gui='..(c.gui and c.gui or 'NONE')..' guifg='..(c.guifg and c.guifg or '')..' guibg='..(c.guibg and c.guibg or ''), '')
   end
-end, 100)
+end)
 
 return M
