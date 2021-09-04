@@ -45,9 +45,9 @@ require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = true,
+  open_on_tab         = true,
   lsp_diagnostics     = true,
   auto_close          = false,
-  tab_open            = true,
   hijack_cursor       = true,
   update_cwd          = true,
   update_focused_file = {
