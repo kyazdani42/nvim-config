@@ -74,6 +74,11 @@ require('packer').startup(function()
       })
       vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", { silent = true })
       vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", { silent = true })
+      vim.cmd [[
+        augroup KommentaryCmd
+          au CursorHold * lua require'ts_context_commentstring.internal'.update_commentstring()
+        augroup END
+      ]]
     end
   }
 
@@ -133,5 +138,12 @@ require('packer').startup(function()
         }
       }
     end
+  }
+
+  use {
+    'pwntester/octo.nvim',
+    config = function()
+      require'octo'.setup()
+    end,
   }
 end)

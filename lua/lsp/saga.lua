@@ -29,7 +29,7 @@ function M.setup()
       exec = '<CR>'
     },
     -- definition_preview_icon = '  '
-    border_style = 1,
+    border_style = 'single',
     rename_prompt_prefix = '➤',
   }
 end

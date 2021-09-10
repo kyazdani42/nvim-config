@@ -1,6 +1,5 @@
 local options = {
   view = "default",
-  numbers = "none",
   buffer_close_icon= '',
   modified_icon = '✗',
   close_icon = '',
