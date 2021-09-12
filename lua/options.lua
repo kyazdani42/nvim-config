@@ -23,6 +23,7 @@ o.inccommand = 'split' -- Show effects of command as you type in a split
 o.clipboard = 'unnamedplus' -- Use system clipboard
 o.shortmess = vim.o.shortmess .. 'c'
 o.guifont = 'monospace:h15'
+o.wrap = false
 
 local function setl(opt, value)
   vim.cmd(":set "..opt..(value and "="..value or ""))
