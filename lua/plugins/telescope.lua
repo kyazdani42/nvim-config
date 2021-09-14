@@ -24,6 +24,7 @@ require('telescope').setup{
     layout_config = {
       height = 15,
     },
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
     mappings = {
       i = {
         ["<esc>"] = actions.close,
