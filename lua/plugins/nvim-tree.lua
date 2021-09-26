@@ -59,4 +59,15 @@ require'nvim-tree'.setup {
     cmd  = nil,
     args = {}
   },
+  view = {
+    width = 35,
+    side = 'left',
+    auto_resize = true,
+    mappings = {
+      custom_only = false,
+      list = {
+        { mode = "n", key = "<C-t>", cb = "<cmd>lua require'telescope.builtin'.live_grep()<cr>" }
+      }
+    }
+  }
 }
