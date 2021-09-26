@@ -1,6 +1,5 @@
 vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
 vim.g.nvim_tree_gitignore = 1
-vim.g.nvim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_show_icons = {
 	git = 1,
 	folders = 1,
