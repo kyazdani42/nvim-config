@@ -45,6 +45,10 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = true,
   open_on_tab         = true,
+  update_to_buf_dir   = {
+    enable = true,
+    auto_open = true,
+  },
   lsp_diagnostics     = true,
   auto_close          = false,
   hijack_cursor       = true,
@@ -52,9 +56,9 @@ require'nvim-tree'.setup {
   update_focused_file = {
     enable = true,
     update_cwd = true,
-    ignore_list = { 'fzf' }
+    ignore_list = { 'fzf', 'help', 'git' }
   },
-  ignore_ft_on_setup = {},
+  ignore_ft_on_setup = { 'git', 'man', 'help' },
   system_open = {
     cmd  = nil,
     args = {}

@@ -116,7 +116,7 @@ local function sumneko(cap)
         },
         completion = { keywordSnippet = "Disable" },
         diagnostics = {
-          globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
+          globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use", "describe", "it", "dump"},
         },
         workspace = {
           library = {

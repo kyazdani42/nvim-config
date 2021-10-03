@@ -16,6 +16,13 @@ require('packer').startup(function()
   }
 
   use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {}
+    end
+  }
+
+  use {
     '~/dev/plugins/nvim-tree.lua',
     config = function() require'plugins.nvim-tree' end
   }
@@ -94,7 +101,11 @@ require('packer').startup(function()
 
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function() require'colorizer'.setup() end
+    config = function()
+      if vim.api.nvim_get_option('termguicolors') then
+        require'colorizer'.setup()
+      end
+    end
   }
 
   use {
