@@ -17,7 +17,7 @@ vim.g.nvim_tree_window_picker_exclude = {
 
 vim.g.nvim_tree_icons = {
 	default = '',
-	git= {
+	git = {
 		unstaged = "✗",
 		staged = "✓",
 		unmerged = "",
