@@ -2,7 +2,7 @@ local Tools = {}
 
 local patterns = {
   tsx = function(cname)
-    return [[import { React } from 'react';
+    return [[import React from 'react';
 
       interface ]]..cname..[[Props {
       }
@@ -15,7 +15,7 @@ local patterns = {
     ]]
   end,
   jsx = function(cname)
-    return [[import { React } from 'react';
+    return [[import React from 'react';
 
       export const ]]..cname..[[ = () => {
       return (

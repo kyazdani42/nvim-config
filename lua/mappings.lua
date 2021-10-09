@@ -30,4 +30,7 @@ map('n', '<C-f>', '<C-f>zz')
 
 map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
 
-map('n', '<leader>b', ':BufferLinePick<cr>', { silent = true })
+map('n', '<leader>b', '<cmd>BufferLinePick<cr>', { silent = true })
+map('n', '<leader>tt', '<cmd>Trouble<cr>', { silent = true })
+map('n', '<leader>td', '<cmd>Trouble lsp_definitions<cr>', { silent = true })
+map('n', '<leader>tr', '<cmd>Trouble lsp_references<cr>', { silent = true })

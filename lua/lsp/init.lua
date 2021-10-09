@@ -12,6 +12,12 @@ local function location_cb(err, _, result)
 end
 
 function M.setup()
+  vim.cmd [[
+    sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
+    sign define DiagnosticSignWarn text=⚠ texthl=DiagnosticSignWarn linehl= numhl=
+    sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
+    sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
+  ]]
   vim.lsp.handlers['textDocument/definition'] = location_cb
   vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -21,7 +27,7 @@ function M.setup()
       signs = false,
       virtual_text = {
         spacing = 0,
-        prefix = ' '
+        prefix = ' '
       },
     }
   )

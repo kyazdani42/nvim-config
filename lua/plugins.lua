@@ -109,11 +109,6 @@ require('packer').startup(function()
   }
 
   use {
-    'steelsojka/pears.nvim',
-    config = function() require'pears'.setup() end
-  }
-
-  use {
     'hrsh7th/nvim-compe',
     config = function() require 'plugins.compe' end
   }
@@ -135,7 +130,16 @@ require('packer').startup(function()
   use {
     "folke/trouble.nvim",
     config = function()
-      require("trouble").setup {}
+      require("trouble").setup {
+        indent_lines = false,
+        signs = {
+          error = "",
+          warning = "⚠",
+          hint = "",
+          information = "",
+          other = ""
+        }
+      }
     end
   }
 
