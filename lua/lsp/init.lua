@@ -16,18 +16,22 @@ function M.setup()
   vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
+      -- TODO: enable underline when https://github.com/alacritty/alacritty/pull/4660 is merged
+      underline = false,
       signs = false,
       virtual_text = {
-        spacing = 2,
-        prefix = ''
+        spacing = 0,
+        prefix = ' '
       },
     }
   )
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  require'lsp.languages.lua'.setup(capabilities)
-  require'lsp.languages.ecma'.setup(capabilities)
+
+  local langs = {'lua', 'ecma', 'rust', 'go', 'graphql', 'java', 'kotlin'}
+  for _, lang in pairs(langs) do
+    require('lsp.languages.'..lang).setup(capabilities)
+  end
 end
 
 return M
