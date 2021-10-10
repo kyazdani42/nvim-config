@@ -49,7 +49,9 @@ require'nvim-tree'.setup {
     enable = true,
     auto_open = true,
   },
-  lsp_diagnostics     = true,
+  diagnostics = {
+    enable = true,
+  },
   auto_close          = false,
   hijack_cursor       = true,
   update_cwd          = true,
