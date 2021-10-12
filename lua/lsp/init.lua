@@ -26,8 +26,8 @@ function M.setup()
       underline = false,
       signs = false,
       virtual_text = {
-        spacing = 0,
-        prefix = ' '
+        spacing = 1,
+        prefix = ' '
       },
     }
   )

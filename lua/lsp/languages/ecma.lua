@@ -116,9 +116,9 @@ end
 
 function M.setup(cap)
   tsserver(cap)
+  rome()
   eslint()
   denols()
-  rome()
 end
 
 return M
