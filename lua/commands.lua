@@ -24,4 +24,6 @@ nvim_set_au("BufWritePost", "*.tex", ":silent !pdflatex % &>/dev/null")
 vim.cmd "cabbrev W w"
 vim.cmd "cabbrev Xa xa"
 
+vim.cmd "command! -nargs=0 Format :lua vim.lsp.buf.formatting_sync()<cr>"
+
 vim.cmd "command! Dnd :!dragon-drag-and-drop %"
