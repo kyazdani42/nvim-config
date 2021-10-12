@@ -37,6 +37,7 @@ require('telescope').setup{
     buffers = ivy,
     find_files = ivy,
     live_grep = ivy,
+    lsp_references = ivy
   }
 }
 

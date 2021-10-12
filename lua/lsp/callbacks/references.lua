@@ -58,7 +58,7 @@ function M.select_from_ref()
   api.nvim_win_set_cursor(main_win, { [1] = tonumber(line_nb), [2] = 0 })
 end
 
-function M.references_cb(err, _, results)
+function M.references_cb(err, results)
   if err then return api.nvim_err_writeln(err) end
   if not results or #results < 2 then
     return require'utils'.warn("No reference found")

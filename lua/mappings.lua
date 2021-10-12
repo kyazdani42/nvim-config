@@ -13,9 +13,6 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 map('n', '<C-h>', '<C-w>h')
 
--- this maps semi colon to the command editor
-map('n', ';', ':<C-f>i', { noremap = true })
-
 map('n', '<leader>v', ':noh<CR>', { silent=true })
 
 map('n', 'j', 'gj')

@@ -12,7 +12,7 @@ function M.on_attach(_, bufnr)
   buf_set_keymap('n', '<leader>gd',     '<cmd>lua require"lspsaga.provider".preview_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua require"lspsaga.rename".rename()<CR>', opts)
 
-  buf_set_keymap('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gr',         "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
   buf_set_keymap('n', 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gy',         '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
