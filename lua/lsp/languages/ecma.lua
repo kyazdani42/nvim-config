@@ -44,6 +44,11 @@ local function eslint()
     formatStdin = true
   }
 
+  local prettier = {
+    formatCommand = 'prettier --stdin-filepath ${INPUT}',
+    formatStdin = true
+  }
+
   require "lspconfig".efm.setup {
     on_attach = function(client)
       client.resolved_capabilities.document_formatting = true
@@ -57,12 +62,12 @@ local function eslint()
     end,
     settings = {
       languages = {
-        javascript = {eslint_cmd},
-        javascriptreact = {eslint_cmd},
-        ["javascript.jsx"] = {eslint_cmd},
-        typescript = {eslint_cmd},
-        ["typescript.tsx"] = {eslint_cmd},
-        typescriptreact = {eslint_cmd}
+        javascript = {eslint_cmd, prettier},
+        javascriptreact = {eslint_cmd, prettier},
+        ["javascript.jsx"] = {eslint_cmd, prettier},
+        typescript = {eslint_cmd, prettier},
+        ["typescript.tsx"] = {eslint_cmd, prettier},
+        typescriptreact = {eslint_cmd, prettier}
       }
     },
     filetypes = {

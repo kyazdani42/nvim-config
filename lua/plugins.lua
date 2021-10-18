@@ -123,8 +123,6 @@ require('packer').startup(function()
     config = function() require'lsp.saga'.setup() end
   }
 
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}, config = function() require'plugins.dap' end }
-
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   use {
