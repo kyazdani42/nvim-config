@@ -17,8 +17,8 @@ map('n', '<leader>v', ':noh<CR>', { silent=true })
 
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
-map('n', '<space><space>', '<c-^>')
-map('n', '<leader><leader>', ':tabnext<CR>')
+map('n', '<leader><leader>', '<c-^>')
+map('n', '<leader>tn', ':tabnext<CR>')
 
 map('n', 'Q', '')
 map('n', '<F1>', '')

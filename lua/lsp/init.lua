@@ -1,7 +1,7 @@
 local api = vim.api
 local M = {}
 
-local function location_cb(err, _, result)
+local function definition_handler(err, result)
   if err then return api.nvim_err_writeln(err) end
   if not result then
     return require'utils'.warn('No definition found')
@@ -11,6 +11,21 @@ local function location_cb(err, _, result)
   vim.lsp.util.jump_to_location(res)
 end
 
+local function to_diagnostic(where)
+  return function()
+    local diagnostics = vim.lsp.diagnostic.get(vim.api.nvim_get_current_buf())
+
+    if #diagnostics == 0 then
+      return require'utils'.warn("No diagnostics")
+    end
+
+    require'lspsaga.diagnostic'.navigate(where){}
+  end
+end
+
+M.prev_diagnostic = to_diagnostic "prev"
+M.next_diagnostic = to_diagnostic "next"
+
 function M.setup()
   vim.cmd [[
     sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
@@ -18,8 +33,8 @@ function M.setup()
     sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=
     sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
   ]]
-  vim.lsp.handlers['textDocument/definition'] = location_cb
-  vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
+
+  vim.lsp.handlers['textDocument/definition'] = definition_handler
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       -- TODO: enable underline when https://github.com/alacritty/alacritty/pull/4660 is merged
