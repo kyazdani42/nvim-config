@@ -30,10 +30,6 @@ local function get_eslint_root(fname)
   return decoded["eslintConfig"] and package_json_root or nil
 end
 
-local function get_rome_config_root(fname)
-  return root_pattern(fname, 'rome.json', '.config/rome.rjson')
-end
-
 local function eslint()
   local eslint_cmd = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
@@ -55,9 +51,6 @@ local function eslint()
       client.resolved_capabilities.goto_definition = false
     end,
     root_dir = function(fname)
-      if get_rome_config_root(fname) then
-        return nil
-      end
       return get_eslint_root(fname)
     end,
     settings = {
@@ -93,37 +86,9 @@ local function tsserver(cap)
   }
 end
 
-local function denols()
-  require'lspconfig'.denols.setup {
-    cmd = { "deno", "lsp" },
-    filetypes = { "javascript", "typescript" },
-    init_options = {
-      enable = true,
-      lint = true,
-      unstable = false
-    },
-    handlers = vim.lsp.handlers,
-    root_dir = function(fname)
-      if get_eslint_root(fname) or get_rome_config_root(fname) then
-        return nil
-      end
-
-      return vim.fn.fnamemodify(fname, ':h')
-    end,
-  }
-end
-
-local function rome()
-  require'lspconfig'.rome.setup {
-    root_dir = get_rome_config_root
-  }
-end
-
 function M.setup(cap)
   tsserver(cap)
-  rome()
   eslint()
-  denols()
 end
 
 return M

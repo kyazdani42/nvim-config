@@ -34,3 +34,6 @@ map('n', '<leader>b', '<cmd>BufferLinePick<cr>', { silent = true })
 map('n', '<leader>tt', '<cmd>Trouble<cr>', { silent = true })
 map('n', '<leader>td', '<cmd>Trouble lsp_definitions<cr>', { silent = true })
 map('n', '<leader>tr', '<cmd>Trouble lsp_references<cr>', { silent = true })
+
+map('n', '<leader>gg', '<cmd>Neogit<cr>', { silent = true })
+map('n', '<leader>gb', '<cmd>Git blame<cr>', { silent = true })
