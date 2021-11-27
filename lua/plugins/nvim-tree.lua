@@ -1,9 +1,7 @@
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
-vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_show_icons = {
-	git = 1,
-	folders = 1,
-	files = 1,
+  git = 1,
+  folders = 1,
+  files = 1,
   folder_arrows = 1
 }
 vim.g.nvim_tree_group_empty = 1
@@ -16,28 +14,28 @@ vim.g.nvim_tree_window_picker_exclude = {
 }
 
 vim.g.nvim_tree_icons = {
-	default = '',
-	git = {
-		unstaged = "✗",
-		staged = "✓",
-		unmerged = "",
-		renamed = "➜",
-		untracked = "★"
-	},
-	folder = {
-		default = "",
-		open = ""
-	}
+  default = '',
+  git = {
+    unstaged = "✗",
+    staged = "✓",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "★"
+  },
+  folder = {
+    default = "",
+    open = ""
+  }
 }
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
-	noremap = true,
-	silent = true
+  noremap = true,
+  silent = true
 })
 
 vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', {
-	noremap = true,
-	silent = true
+  noremap = true,
+  silent = true
 })
 
 require'nvim-tree'.setup {
@@ -65,6 +63,10 @@ require'nvim-tree'.setup {
     cmd  = nil,
     args = {}
   },
+  filters = {
+    dotfiles = false,
+    custom = { '.git', 'node_modules', 'dist' }
+  },
   view = {
     width = 35,
     side = 'left',
@@ -75,5 +77,11 @@ require'nvim-tree'.setup {
         { mode = "n", key = "<C-t>", cb = "<cmd>lua require'telescope.builtin'.live_grep()<cr>" }
       }
     }
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 400,
+  },
   }
 }
