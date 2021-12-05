@@ -47,7 +47,7 @@ function M.setup()
     }
   )
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   local langs = {'lua', 'ecma', 'rust', 'go', 'graphql', 'java', 'kotlin'}
   for _, lang in pairs(langs) do

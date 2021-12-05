@@ -1,45 +1,37 @@
-local o = vim.o
--- local wo = vim.wo
--- local bo = vim.bo
+local opt = vim.opt
 
--- GLOBAL OPTIONS
--- o.debug = 'throw'
-o.updatetime = 300
-o.foldlevelstart = 99
-o.termguicolors = true
-o.mouse= 'a' -- Enable mouse
-o.ignorecase = true -- Ignore case
-o.confirm = true -- Disable 'no write'
-o.scrolloff = 8 -- Lines from the cursor
-o.incsearch = true -- Move cursor during search
-o.splitright = true -- Splits open on the right
-o.splitbelow = true -- Splits open on the bottom
-o.wildmenu = true -- Command line completion mode
-o.wildmode = 'full' -- Command line completion mode
-o.hlsearch = true -- Highlight search results (enforce)
-o.showmatch = true -- Show matching brackets/parenthesis
-o.showmode = false -- Do not output message on the bottom
-o.inccommand = 'split' -- Show effects of command as you type in a split
-o.clipboard = 'unnamedplus' -- Use system clipboard
-o.shortmess = vim.o.shortmess .. 'c'
-o.guifont = 'monospace:h15'
-o.wrap = false
-
-local function setl(opt, value)
-  vim.cmd(":set "..opt..(value and "="..value or ""))
-end
-
--- BUFFER_OPTIONS
-setl('expandtab')
-setl('shiftwidth', 4)
-setl('tabstop', 4)
-setl('formatoptions', 'tqj')
-setl('smartindent')
-
--- WINDOW_OPTIONS
-setl('relativenumber')
-setl('cursorline')
-setl('linebreak')
-setl('foldmethod', 'expr')
-setl('foldexpr', 'nvim_treesitter#foldexpr()')
-setl('signcolumn', 'yes')
+-- opt.debug = 'throw'
+opt.updatetime = 300
+opt.foldlevelstart = 99
+opt.termguicolors = true
+opt.mouse= 'a' -- Enable mouse
+opt.ignorecase = true -- Ignore case
+opt.confirm = true -- Disable 'no write'
+opt.scrolloff = 8 -- Lines from the cursor
+opt.incsearch = true -- Move cursor during search
+opt.splitright = true -- Splits open on the right
+opt.splitbelow = true -- Splits open on the bottom
+opt.wildmenu = true -- Command line completion mode
+opt.wildmode = 'full' -- Command line completion mode
+opt.hlsearch = true -- Highlight search results (enforce)
+opt.showmatch = true -- Show matching brackets/parenthesis
+opt.showmode = false -- Do not output message on the bottom
+opt.inccommand = 'split' -- Show effects of command as you type in a split
+opt.clipboard = 'unnamedplus' -- Use system clipboard
+opt.shortmess:append "c"
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.guifont = 'monospace:h15'
+opt.wrap = false
+opt.relativenumber = true
+opt.cursorline = true
+opt.linebreak = true
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.signcolumn = 'yes'
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.smartindent = true
+-- avoid autocommenting on newline.
+-- needs autocmd because option is local to buffer.
+vim.cmd "au BufEnter * setlocal formatoptions-=cro"
