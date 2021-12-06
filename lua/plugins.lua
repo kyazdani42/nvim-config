@@ -27,9 +27,11 @@ require('packer').startup(function()
 
   use '~/dev/plugins/playground'
 
+  use 'nvim-lua/plenary.nvim'
+
+  use 'cljoly/telescope-repo.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
     config = function() require'plugins.telescope' end,
   }
 
@@ -54,9 +56,6 @@ require('packer').startup(function()
 
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
     config = function() require'plugins.gitsigns' end
   }
 
@@ -127,7 +126,7 @@ require('packer').startup(function()
     config = function() require'lsp.saga'.setup() end
   }
 
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use 'TimUntersberger/neogit'
 
   use {
     "folke/trouble.nvim",
