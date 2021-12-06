@@ -9,6 +9,7 @@ end
 set_map('<C-p>', 'find_files')
 set_map('<C-b>', 'buffers')
 set_map('<C-t>', 'live_grep')
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>Telescope repo list<cr>', { silent = true })
 
 local ivy =  {
   theme = "ivy",
@@ -40,6 +41,8 @@ require('telescope').setup{
     lsp_references = ivy
   }
 }
+
+require'telescope'.load_extension 'repo'
 
 -- need to schedul
 vim.schedule(function()

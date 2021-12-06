@@ -14,7 +14,7 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-c>"] = cmp.mapping.close(),
     ["<CR>"] =  cmp.mapping.confirm {
-      select = true,
+      select = false,
       behavior = cmp.ConfirmBehavior.Insert
     },
     ["<c-space>"] = cmp.mapping {
