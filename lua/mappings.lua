@@ -1,39 +1,47 @@
-local function map(mod, lhs, rhs, opt)
-  vim.api.nvim_set_keymap(mod, lhs, rhs, opt or {})
+local function map(mode)
+  return function (lhs, rhs, opt)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, opt or {})
+  end
 end
+
+local nmap = map('n')
+local vmap = map('v')
+local imap = map('i')
+local _map = map('')
 
 vim.g.mapleader = '\\'
 
-map('', '<C-j>', '', { nowait = true })
-map('i', '<C-j>', '<ESC>', { nowait = true })
-map('v', '<C-j>', '<ESC>', { nowait = true })
+_map('<C-j>', '', { nowait = true })
+imap('<C-j>', '<ESC>', { nowait = true })
+vmap('<C-j>', '<ESC>', { nowait = true })
 
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
-map('n', '<C-h>', '<C-w>h')
+nmap('<C-j>', '<C-w>j')
+nmap('<C-k>', '<C-w>k')
+nmap('<C-l>', '<C-w>l')
+nmap('<C-h>', '<C-w>h')
 
-map('n', '<leader>v', ':noh<CR>', { silent=true })
+nmap('<leader>v', ':noh<CR>', { silent=true })
 
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
-map('n', '<leader><leader>', '<c-^>')
-map('n', '<leader>tn', ':tabnext<CR>')
+nmap('j', 'gj')
+nmap('k', 'gk')
+nmap('<leader><leader>', '<c-^>')
+nmap('<leader>tn', ':tabnext<CR>')
 
-map('n', 'Q', '')
-map('n', '<F1>', '')
-map('i', '<F1>', '')
+nmap('Q', '')
+nmap('<F1>', '')
+imap('<F1>', '')
 
-map('n', '<C-u>', '<C-u>zz')
-map('n', '<C-d>', '<C-d>zz')
-map('n', '<C-f>', '<C-f>zz')
+nmap('<C-u>', '<C-u>zz')
+nmap('<C-d>', '<C-d>zz')
+nmap('<C-f>', '<C-f>zz')
 
-map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
+nmap('<tab>', ':normal za<cr>', { noremap = true, silent = true })
 
-map('n', '<leader>b', '<cmd>BufferLinePick<cr>', { silent = true })
-map('n', '<leader>tt', '<cmd>Trouble<cr>', { silent = true })
-map('n', '<leader>td', '<cmd>Trouble lsp_definitions<cr>', { silent = true })
-map('n', '<leader>tr', '<cmd>Trouble lsp_references<cr>', { silent = true })
+nmap('<leader>tt', '<cmd>Trouble<cr>', { silent = true })
+nmap('<leader>td', '<cmd>Trouble lsp_definitions<cr>', { silent = true })
+nmap('<leader>tr', '<cmd>Trouble lsp_references<cr>', { silent = true })
 
-map('n', '<leader>gg', '<cmd>Neogit<cr>', { silent = true })
-map('n', '<leader>gb', '<cmd>Git blame<cr>', { silent = true })
+nmap('<leader>gg', '<cmd>Neogit<cr>', { silent = true })
+nmap('<leader>gb', '<cmd>Git blame<cr>', { silent = true })
+
+nmap('<leader>bd', ':lua K.delete_hidden_bufs()<CR>', { silent = true })

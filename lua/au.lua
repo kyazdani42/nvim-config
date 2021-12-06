@@ -7,7 +7,7 @@ local function nvim_set_au(au_type, where, dispatch)
   vim.cmd(string.format("au! %s %s %s", au_type, where, dispatch))
 end
 
--- Disable autocommenting on newline and retrieve last position
+-- Retrieve last position in file
 nvim_set_au("BufWinEnter", "*", [[exec "normal! g'\""]])
 nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({ timeout=500 })]])
 nvim_set_au("FileType", "scheme", "set ft=query")
