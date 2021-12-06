@@ -83,5 +83,4 @@ require'nvim-tree'.setup {
     ignore = true,
     timeout = 400,
   },
-  }
 }

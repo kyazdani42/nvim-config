@@ -16,13 +16,6 @@ require('packer').startup(function()
   }
 
   use {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {}
-    end
-  }
-
-  use {
     '~/dev/plugins/nvim-tree.lua',
     config = function() require'plugins.nvim-tree' end
   }
