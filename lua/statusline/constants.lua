@@ -54,7 +54,7 @@ M.groups = {
   git = "%#STGitBranch#",
   cursorline = '%#CursorLine#',
   vertsplit = '%#VertSplit#',
-  fname = '%#TabLineSel#'
+  fname = '%#STGitBranch#'
 }
 
 return M
