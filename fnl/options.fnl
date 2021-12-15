@@ -1,0 +1,41 @@
+(module options
+  {autoload {nvim aniseed.nvim}})
+
+(set vim.opt.debug :throw)
+
+(set vim.opt.updatetime 300)
+(set vim.opt.foldlevelstart 99)
+(set vim.opt.termguicolors true)
+(set vim.opt.mouse :a)
+(set vim.opt.ignorecase true)
+(set vim.opt.confirm true)
+(set vim.opt.scrolloff 8)
+(set vim.opt.incsearch true)
+(set vim.opt.splitright true)
+(set vim.opt.splitbelow true)
+(set vim.opt.wildmenu true)
+(set vim.opt.wildmode :full)
+(set vim.opt.hlsearch true)
+(set vim.opt.showmatch true)
+(set vim.opt.showmode false)
+(set vim.opt.inccommand :split)
+(set vim.opt.clipboard :unnamedplus)
+(set vim.opt.completeopt ["menu" "menuone" "noselect"])
+(set vim.opt.guifont "monospace:h15")
+(set vim.opt.wrap false)
+(set vim.opt.relativenumber true)
+(set vim.opt.cursorline true)
+(set vim.opt.linebreak true)
+(set vim.opt.foldmethod :expr)
+(set vim.opt.foldexpr "nvim_treesitter#foldexpr()")
+(set vim.opt.signcolumn :yes)
+(set vim.opt.expandtab true)
+(set vim.opt.shiftwidth 4)
+(set vim.opt.tabstop 4)
+(set vim.opt.smartindent true)
+
+(nvim.ex.set "shortmess+=c")
+
+; avoid autocommenting on newline.
+; needs autocmd because option is local to buffer.
+(vim.cmd "au BufEnter * setlocal formatoptions-=cro")

@@ -2,6 +2,8 @@ vim.cmd "packadd! packer.nvim"
 
 require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
+  use 'Olical/aniseed'
+  use 'Olical/conjure'
 
   use {
     '~/dev/plugins/blue-moon',
