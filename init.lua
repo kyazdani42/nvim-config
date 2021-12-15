@@ -1,4 +1,3 @@
-require 'au'
 require 'mappings'
 require 'plugins'
 require 'statusline'.setup()

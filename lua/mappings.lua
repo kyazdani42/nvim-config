@@ -45,3 +45,9 @@ nmap('<leader>gg', '<cmd>Neogit<cr>', { silent = true })
 nmap('<leader>gb', '<cmd>Git blame<cr>', { silent = true })
 
 nmap('<leader>bd', ':lua K.delete_hidden_bufs()<CR>', { silent = true })
+
+vim.cmd "cabbrev W w"
+vim.cmd "cabbrev Xa xa"
+
+vim.cmd "command! -nargs=0 Format :lua vim.lsp.buf.formatting_sync()<cr>"
+vim.cmd "command! Dnd :!dragon-drag-and-drop %"

@@ -1,3 +1,4 @@
 plugin
 lua/init.lua
 lua/options.lua
+lua/autocmd.lua
