@@ -44,7 +44,7 @@ nmap('<leader>tr', '<cmd>Trouble lsp_references<cr>', { silent = true })
 nmap('<leader>gg', '<cmd>Neogit<cr>', { silent = true })
 nmap('<leader>gb', '<cmd>Git blame<cr>', { silent = true })
 
-nmap('<leader>bd', ':lua K.delete_hidden_bufs()<CR>', { silent = true })
+nmap('<leader>bd', ':lua K["delete-hidden-bufs"]()<CR>', { silent = true })
 
 vim.cmd "cabbrev W w"
 vim.cmd "cabbrev Xa xa"

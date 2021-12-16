@@ -1,8 +1,9 @@
-(module init)
+(module init
+  {require {k k
+            _ options
+            _ autocmd}})
 
-(require :options)
-(require :autocmd)
-(set _G.K (require :k))
+(set _G.K k)
 
 (defn dump [...]
   (print 
