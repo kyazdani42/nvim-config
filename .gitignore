@@ -2,3 +2,5 @@ plugin
 lua/init.lua
 lua/options.lua
 lua/autocmd.lua
+lua/k
+lua/utils.lua

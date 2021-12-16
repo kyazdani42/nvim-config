@@ -2,6 +2,7 @@
 
 (require :options)
 (require :autocmd)
+(set _G.K (require :k))
 
 (defn dump [...]
   (print 

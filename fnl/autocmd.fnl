@@ -1,7 +1,7 @@
 (module autocmd)
 
 (defn autocmd [name where func]
-  (vim.cmd (string.format "au! %s %s %s" name where func)))
+  (vim.cmd (string.format "au %s %s %s" name where func)))
 
 (autocmd "BufWinEnter" "*" (string.format "exec \"%s\"" "normal! g'\\\""))
 (autocmd "TextYankPost" "*" "silent! lua require'vim.highlight'.on_yank({ timeout=500 })")
