@@ -13,7 +13,7 @@ end
 
 local function to_diagnostic(where)
   return function()
-    local diagnostics = vim.lsp.diagnostic.get(vim.api.nvim_get_current_buf())
+    local diagnostics = vim.diagnostic.get(vim.api.nvim_get_current_buf())
 
     if #diagnostics == 0 then
       return require'utils'.warn("No diagnostics")
