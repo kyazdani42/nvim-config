@@ -1,4 +1,3 @@
-require 'mappings'
 require 'plugins'
 require 'statusline'.setup()
 pcall(require, 'custom')

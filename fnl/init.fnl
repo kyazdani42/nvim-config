@@ -1,7 +1,8 @@
 (module init
-  {require {k k
-            _ options
-            _ autocmd}})
+  {require {_ options
+            k k
+            _ autocmd
+            _ keymap}})
 
 (set _G.K k)
 

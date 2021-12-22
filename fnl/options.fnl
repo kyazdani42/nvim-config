@@ -33,9 +33,5 @@
 (set vim.opt.shiftwidth 4)
 (set vim.opt.tabstop 4)
 (set vim.opt.smartindent true)
-
+(set vim.g.mapleader "\\")
 (nvim.ex.set "shortmess+=c")
-
-; avoid autocommenting on newline.
-; needs autocmd because option is local to buffer.
-(vim.cmd "au BufEnter * setlocal formatoptions-=cro")

@@ -1,6 +1,6 @@
 (module autocmd)
 
-(defn autocmd [name where func]
+(fn autocmd [name where func]
   (vim.cmd (string.format "au %s %s %s" name where func)))
 
 (autocmd "BufWinEnter" "*" (string.format "exec \"%s\"" "normal! g'\\\""))
@@ -15,3 +15,6 @@
 (autocmd "FileType" "markdown" "set tabstop=4 shiftwidth=4 conceallevel=2")
 (autocmd "FileType" "json,elixir,typescriptreact,typescript,javascript,javascriptreact,lua,html,css,graphql" "set tabstop=2 shiftwidth=2")
 (autocmd "BufWritePost" "*.tex" ":silent !pdflatex % &>/dev/null")
+; avoid autocommenting on newline.
+; needs autocmd because option is local to buffer.
+(autocmd "BufEnter" "*" "setlocal formatoptions-=cro")
