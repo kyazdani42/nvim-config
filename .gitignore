@@ -4,4 +4,5 @@ lua/options.lua
 lua/autocmd.lua
 lua/k
 lua/utils.lua
-lua/keymap.lua
+lua/mappings.lua
+lua/statusline

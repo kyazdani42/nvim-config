@@ -2,7 +2,8 @@
   {require {_ options
             k k
             _ autocmd
-            _ keymap}})
+            _ mappings
+            _ statusline}})
 
 (set _G.K k)
 

@@ -1,4 +1,4 @@
-(module keymap
+(module mappings
   {autoload {nvim aniseed.nvim}})
 
 (fn map [mode lhs rhs opt]
