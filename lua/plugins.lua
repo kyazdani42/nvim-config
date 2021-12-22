@@ -164,4 +164,6 @@ require('packer').startup(function()
       require'octo'.setup()
     end,
   }
+
+  use 'Saecki/crates.nvim'
 end)

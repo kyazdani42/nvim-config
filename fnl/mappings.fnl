@@ -53,4 +53,4 @@
 (nvim.ex.cabbrev "X" "x")
 
 (nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.formatting_sync()")
-(nvim.ex.command! "Dnd" ":!dragon-drag-and-drop %")
+(nvim.ex.command! "Dnd" ":!dragon %")
