@@ -12,7 +12,12 @@ require'nvim-web-devicons'.set_icon {
   js = {
     icon = "",
     color = "#EBCB8B",
-    name = "js"
+    name = "Js"
+  },
+  ts = {
+    icon = "ﯤ",
+    color = "#519aba",
+    name = "Ts"
   },
   png = {
     icon = " ",
