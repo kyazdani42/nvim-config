@@ -108,7 +108,7 @@ require('packer').startup(function()
 
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require 'plugins.completion' end
+    config = function() require '_plugins.nvim-cmp' end
   }
   use 'onsails/lspkind-nvim'
   use "hrsh7th/cmp-cmdline"
