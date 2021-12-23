@@ -48,6 +48,9 @@
 
 (nmap "<leader>bd" ":lua K['delete-hidden-bufs']()<CR>" silent)
 
+(nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
+(nmap "<leader>r" ":NvimTreeRefresh<CR>" noremap-silent)
+
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")

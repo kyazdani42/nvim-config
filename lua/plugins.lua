@@ -19,7 +19,7 @@ require('packer').startup(function()
 
   use {
     '~/dev/plugins/nvim-tree.lua',
-    config = function() require'plugins.nvim-tree' end
+    config = function() require'_plugins.nvim-tree' end
   }
 
   use {
