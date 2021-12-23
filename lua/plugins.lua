@@ -1,6 +1,6 @@
 vim.cmd "packadd! packer.nvim"
 
-require('packer').startup(function()
+require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
   use 'Olical/aniseed'
   use 'Olical/conjure'
@@ -84,21 +84,13 @@ require('packer').startup(function()
   }
 
   use {
-    'editorconfig/editorconfig',
-    setup = function()
-      vim.g.EditorConfig_exclude_patterns = {
-        'fugitive://.*',
-        'scp://.*'
-      }
-    end
-  }
-
-  use {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      if vim.api.nvim_get_option('termguicolors') then
-        require'colorizer'.setup()
-      end
+      vim.schedule(function()
+        if vim.api.nvim_get_option('termguicolors') then
+          require'colorizer'.setup()
+        end
+      end)
     end
   }
 
@@ -125,7 +117,7 @@ require('packer').startup(function()
 
   use {
     'tami5/lspsaga.nvim',
-    config = function() require'lsp.saga'.setup() end
+    config = function() require'plugins.lsp-saga' end
   }
 
   use 'TimUntersberger/neogit'
@@ -165,5 +157,6 @@ require('packer').startup(function()
     end,
   }
 
+  use 'editorconfig/editorconfig'
   use 'Saecki/crates.nvim'
 end)

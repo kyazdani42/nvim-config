@@ -21,6 +21,8 @@
 (local bg_def "#1b1e2b")
 (local bg_sel "#121622")
 (local fg_def "#a6accd")
+(local red "#df4344")
+(local cyan "#89ddff")
 
 (local default {:guifg fg_def :guibg bg_def})
 
@@ -34,13 +36,13 @@
                      :guibg bg_sel
                      :gui "bold"}
 
-   :modified {:guifg "#df4344"
+   :modified {:guifg red
               :guibg bg_def}
 
-   :modified_visible {:guifg "#df4344"
+   :modified_visible {:guifg red
                       :guibg bg_def}
 
-   :modified_selected {:guifg "#df4344"
+   :modified_selected {:guifg red
                        :guibg bg_sel}
 
    :indicator_selected {:guifg bg_def
@@ -61,15 +63,15 @@
    :tab_selected {:guifg fg_def
                   :guibg bg_sel}
 
-   :pick_selected {:guifg "#89ddff"
+   :pick_selected {:guifg cyan
                    :guibg bg_sel
                    :gui "bolditalic"}
 
-   :pick_visible {:guifg "#89ddff"
+   :pick_visible {:guifg cyan
                   :guibg bg_def
                   :gui "bolditalic"}
 
-   :pick {:guifg "#89ddff"
+   :pick {:guifg cyan
           :guibg bg_def
           :gui "bolditalic"}})
 

@@ -9,3 +9,4 @@ lua/statusline
 lua/plugins
 lua/lsp/languages/*
 !lua/lsp/languages/ecma.lua
+lua/lsp/utils.lua
