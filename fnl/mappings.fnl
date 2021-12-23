@@ -56,6 +56,8 @@
 (nmap "<C-t>" "<cmd>lua require('telescope.builtin').live_grep()<CR>" noremap-silent)
 (nmap "<leader>p" "<cmd>Telescope repo list<cr>" silent)
 
+(nmap "R" ":write | edit | TSBufEnable highlight<CR>")
+
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
