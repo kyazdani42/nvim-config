@@ -7,3 +7,5 @@ lua/utils.lua
 lua/mappings.lua
 lua/statusline
 lua/plugins
+lua/lsp/languages/*
+!lua/lsp/languages/ecma.lua
