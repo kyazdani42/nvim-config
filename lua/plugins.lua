@@ -13,7 +13,7 @@ require('packer').startup(function()
   use {
     '~/dev/plugins/nvim-web-devicons',
     config = function()
-      require "plugins.web-devicons"
+      require "_plugins.web-devicons"
     end
   }
 
