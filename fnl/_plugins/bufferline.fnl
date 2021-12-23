@@ -1,4 +1,5 @@
-(module _plugins.bufferline)
+(module _plugins.bufferline
+  {autoload {bufferline bufferline}})
 
 (local options
   {:view "default"
@@ -72,4 +73,4 @@
           :guibg bg_def
           :gui "bolditalic"}})
 
-((. (require "bufferline") :setup) {:options options :highlights highlights})
+(bufferline.setup {:options options :highlights highlights})
