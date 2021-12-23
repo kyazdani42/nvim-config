@@ -58,7 +58,7 @@ require('packer').startup(function()
 
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require'plugins.gitsigns' end
+    config = function() require'_plugins.gitsigns' end
   }
 
   use 'tpope/vim-surround'
