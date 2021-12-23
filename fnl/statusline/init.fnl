@@ -74,5 +74,5 @@
 (nvim.ex.au!)
 (nvim.ex.au "TabEnter,WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()")
 (nvim.ex.au "BufEnter,VimEnter * setlocal statusline=%!Status()")
-(nvim.ex.au "Colorscheme * lua require'statusline'.update_colorscheme()")
+(nvim.ex.au "Colorscheme * lua require'statusline'['update-colorscheme']()")
 (nvim.ex.augroup "END")
