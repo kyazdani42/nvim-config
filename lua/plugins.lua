@@ -34,7 +34,7 @@ require('packer').startup(function()
   use 'cljoly/telescope-repo.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    config = function() require'plugins.telescope' end,
+    config = function() require'_plugins.telescope' end,
   }
 
   use {

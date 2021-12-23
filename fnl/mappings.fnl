@@ -51,6 +51,11 @@
 (nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
 (nmap "<leader>r" ":NvimTreeRefresh<CR>" noremap-silent)
 
+(nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files()<CR>" noremap-silent)
+(nmap "<C-b>" "<cmd>lua require('telescope.builtin').buffers()<CR>" noremap-silent)
+(nmap "<C-t>" "<cmd>lua require('telescope.builtin').live_grep()<CR>" noremap-silent)
+(nmap "<leader>p" "<cmd>Telescope repo list<cr>" silent)
+
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
