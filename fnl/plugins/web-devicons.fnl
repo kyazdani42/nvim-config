@@ -1,4 +1,4 @@
-(module _plugins.web-devicons
+(module plugins.web-devicons
   {autoload {devicons nvim-web-devicons}})
 
 (devicons.set_icon

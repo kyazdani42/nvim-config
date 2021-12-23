@@ -1,4 +1,4 @@
-(module _plugins.nvim-tree
+(module plugins.nvim-tree
   {autoload {nvim aniseed.nvim
              tree nvim-tree}})
 

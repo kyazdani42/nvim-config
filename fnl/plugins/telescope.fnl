@@ -1,4 +1,4 @@
-(module _plugins.telescope
+(module plugins.telescope
   {autoload {nvim aniseed.nvim
              telescope telescope
              actions telescope.actions
@@ -33,4 +33,4 @@
   (nvim.ex.highlight "TelescopeResultsBorder  guifg=#444267")
   (nvim.ex.highlight "TelescopeMatching       guifg=#ffcb6b"))
 
-(nvim.ex.au "ColorScheme * lua require'_plugins.telescope'['apply-colorscheme']()")
+(nvim.ex.au "ColorScheme * lua require'plugins.telescope'['apply-colorscheme']()")

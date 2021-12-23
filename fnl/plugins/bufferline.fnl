@@ -1,4 +1,4 @@
-(module _plugins.bufferline
+(module plugins.bufferline
   {autoload {bufferline bufferline}})
 
 (local options

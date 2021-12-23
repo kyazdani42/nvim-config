@@ -6,4 +6,4 @@ lua/k
 lua/utils.lua
 lua/mappings.lua
 lua/statusline
-lua/_plugins
+lua/plugins

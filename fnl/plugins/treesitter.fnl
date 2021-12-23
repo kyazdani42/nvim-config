@@ -1,4 +1,4 @@
-(module _plugins.treesitter
+(module plugins.treesitter
   {autoload {nvim aniseed.nvim
              configs nvim-treesitter.configs}})
 

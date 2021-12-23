@@ -1,4 +1,4 @@
-(module _plugins.nvim-cmp
+(module plugins.nvim-cmp
   {autoload {nvim aniseed.nvim
              lspkind lspkind
              cmp cmp}})

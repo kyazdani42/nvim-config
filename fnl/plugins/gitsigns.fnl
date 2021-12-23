@@ -1,4 +1,4 @@
-(module _plugins.gitsigns
+(module plugins.gitsigns
   {autoload {gitsigns gitsigns}})
 
 (gitsigns.setup

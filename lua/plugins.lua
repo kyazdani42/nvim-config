@@ -13,18 +13,18 @@ require('packer').startup(function()
   use {
     '~/dev/plugins/nvim-web-devicons',
     config = function()
-      require "_plugins.web-devicons"
+      require "plugins.web-devicons"
     end
   }
 
   use {
     '~/dev/plugins/nvim-tree.lua',
-    config = function() require'_plugins.nvim-tree' end
+    config = function() require'plugins.nvim-tree' end
   }
 
   use {
     '~/dev/plugins/nvim-treesitter',
-    config = function() require'_plugins.treesitter' end
+    config = function() require'plugins.treesitter' end
   }
 
   use '~/dev/plugins/playground'
@@ -34,12 +34,12 @@ require('packer').startup(function()
   use 'cljoly/telescope-repo.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    config = function() require'_plugins.telescope' end,
+    config = function() require'plugins.telescope' end,
   }
 
   use {
     'akinsho/nvim-bufferline.lua',
-    config = function() require'_plugins.bufferline' end
+    config = function() require'plugins.bufferline' end
   }
 
   use {
@@ -58,7 +58,7 @@ require('packer').startup(function()
 
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require'_plugins.gitsigns' end
+    config = function() require'plugins.gitsigns' end
   }
 
   use 'tpope/vim-surround'
@@ -108,7 +108,7 @@ require('packer').startup(function()
 
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require '_plugins.nvim-cmp' end
+    config = function() require 'plugins.nvim-cmp' end
   }
   use 'onsails/lspkind-nvim'
   use "hrsh7th/cmp-cmdline"
