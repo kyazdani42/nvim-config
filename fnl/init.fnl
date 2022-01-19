@@ -1,6 +1,7 @@
 (module init
   {require {_ options
             k k
+            _ plugins
             _ autocmd
             _ mappings
             _ statusline}})

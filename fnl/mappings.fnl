@@ -9,9 +9,9 @@
 (local imap (partial map "i"))
 (local _map (partial map ""))
 
-(local nowait { :nowait true })
-(local silent { :silent true })
-(local noremap-silent { :noremap true :silent true })
+(local nowait { :nowait true})
+(local silent { :silent true})
+(local noremap-silent { :noremap true :silent true})
 
 (_map "<C-j>" "" nowait)
 (imap "<C-j>" "<ESC>" nowait)
@@ -64,3 +64,6 @@
 
 (nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.formatting_sync()")
 (nvim.ex.command! "Dnd" ":!dragon %")
+
+(nmap "++" "<Plug>kommentary_line_default" silent)
+(vmap "++" "<Plug>kommentary_visual_default" silent)

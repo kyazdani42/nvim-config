@@ -18,3 +18,7 @@
 ; avoid autocommenting on newline.
 ; needs autocmd because option is local to buffer.
 (autocmd "BufEnter" "*" "setlocal formatoptions-=cro")
+
+(vim.cmd "augroup KommentaryCmd")
+(autocmd "CursorHold" "*" "lua require'ts_context_commentstring.internal'.update_commentstring()")
+(vim.cmd "augroup END")
