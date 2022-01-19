@@ -3,7 +3,6 @@ vim.cmd "packadd! packer.nvim"
 require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
   use 'Olical/aniseed'
-  use 'Olical/conjure'
 
   use {
     '~/dev/plugins/blue-moon',
@@ -151,6 +150,11 @@ require('packer').startup(function(use)
   }
 
   use {
+    "eraserhd/parinfer-rust",
+    run = "cargo build --release",
+  }
+
+  use {
     'pwntester/octo.nvim',
     config = function()
       require'octo'.setup()
@@ -159,4 +163,9 @@ require('packer').startup(function(use)
 
   use 'editorconfig/editorconfig'
   use 'Saecki/crates.nvim'
+
+  use {
+    'Olical/conjure',
+    config = function() require'plugins.conjure' end
+  }
 end)
