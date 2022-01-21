@@ -6,8 +6,7 @@
      {:git 1
       :folders 1
       :files 1
-      :folder_arrows 1
-      })
+      :folder_arrows 1})
 
 (set nvim.g.nvim_tree_group_empty 1)
 (set nvim.g.nvim_tree_window_picker_exclude 
@@ -31,7 +30,7 @@
    :open_on_tab   true
    :update_to_buf_dir {:enable true
                        :auto_open true}
-   :diagnostics {:enable true}
+   :diagnostics {:enable true :show_on_dirs false}
    :auto_close    false
    :hijack_cursor true
    :update_cwd    true
@@ -44,9 +43,10 @@
    :filters {:dotfiles false :custom [".git" "node_modules" "dist"]}
    :view {:width 35
           :side "left"
+          :hide_root_folder false
           :auto_resize true
-          :mappings {:custom_only: false
-                     :list [{:mode "n" :key "<C-t>" :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>" }]}}
+          :mappings {:custom_only false
+                     :list [{:mode "n" :key "<C-t>" :action "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
    :git {:enable true
          :ignore true
          :timeout 400}})
