@@ -46,7 +46,9 @@
 (nmap "<leader>gg" "<cmd>Neogit<cr>" silent)
 (nmap "<leader>gb" "<cmd>Git blame<cr>" silent)
 
-(nmap "<leader>bd" ":lua K['delete-hidden-bufs']()<CR>" silent)
+(nmap "<leader>bd" "<cmd>lua K['delete-hidden-bufs']()<cr>" silent)
+(nmap "<leader>bp" "<cmd>bprev<cr>" silent)
+(nmap "<leader>bn" "<cmd>bnext<cr>" silent)
 
 (nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
 (nmap "<leader>r" ":NvimTreeRefresh<CR>" noremap-silent)
