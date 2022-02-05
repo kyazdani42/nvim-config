@@ -57,7 +57,7 @@
          {:config (fn [] (require :plugins.colorizer))}) 
 
     (use :neovim/nvim-lspconfig
-         {:config (fn [] ((. (require :lsp) :setup)))})
+         {:config (fn [] (require :lsp))})
 
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :plugins.lsp-saga))})

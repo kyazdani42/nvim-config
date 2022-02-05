@@ -24,5 +24,5 @@
     (nmap "gy"         "<cmd>lua vim.lsp.buf.type_definition()<CR>")
     (nmap "gi"         "<cmd>lua vim.lsp.buf.implementation()<CR>")
 
-    (nmap "<leader>s"  "<cmd>lua require'lsp'.prev_diagnostic()<CR>")
-    (nmap "<leader>d"  "<cmd>lua require'lsp'.next_diagnostic()<CR>")))
+    (nmap "<leader>s"  "<cmd>lua require'lsp.diagnostics'['prev-diagnostic']()<CR>")
+    (nmap "<leader>d"  "<cmd>lua require'lsp.diagnostics'['next-diagnostic']()<CR>")))
