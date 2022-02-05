@@ -46,7 +46,9 @@
           :hide_root_folder false
           :auto_resize true
           :mappings {:custom_only false
-                     :list [{:mode "n" :key "<C-t>" :action "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
+                     :list [{:mode "n"
+                             :key "<C-t>" 
+                             :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
    :git {:enable true
          :ignore true
          :timeout 400}})

@@ -12,6 +12,7 @@
                                      :node_decremental "m"}}
    :indent {:enable true}
    :ensure_installed "all"
+   :ignore_install [:norg]
    :textobjects {:select {:enable true
                           :keymaps {"<leader>V" "@function.outer" ; replace with block.inner and block.outer when its supported in more languages
                                     "<leader>v" "@function.inner"}}
