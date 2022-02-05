@@ -25,5 +25,5 @@
       (warn-no-diagnostics)
       (navigate-to where))))
 
-(def prev-diagnostic (lambda [] (to-diagnostic "prev")))
-(def next-diagnostic (lambda [] (to-diagnostic "next")))
+(defn prev-diagnostic [] (to-diagnostic "prev"))
+(defn next-diagnostic [] (to-diagnostic "next"))
