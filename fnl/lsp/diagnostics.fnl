@@ -1,6 +1,8 @@
 (module lsp.diagnostics
   {autoload {a aniseed.core
-             nvim aniseed.nvim}})
+             nvim aniseed.nvim
+             utils utils
+             saga lspsaga.diagnostic}})
 
 (vim.cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
 (vim.cmd "sign define DiagnosticSignWarn text=⚠ texthl=DiagnosticSignWarn linehl= numhl=")
@@ -13,17 +15,11 @@
                     :signs false
                     :virtual_text {:spacing 1 :prefix " "}}))
 
-(defn- warn-no-diagnostics []
-  (. (require "utils") :warn) "No Diagnostics")
-
-(defn- navigate-to [where]
-  (((. (require "lspsaga.diagnostic") :navigate) where)))
-
 (defn- to-diagnostic [where]
   (let [diagnostics (vim.diagnostic.get (nvim.get_current_buf))]
     (if (a.empty? diagnostics)
-      (warn-no-diagnostics)
-      (navigate-to where))))
+      (utils.warn "No Diagnostics")
+      ((saga.navigate where)))))
 
 (defn prev-diagnostic [] (to-diagnostic "prev"))
 (defn next-diagnostic [] (to-diagnostic "next"))

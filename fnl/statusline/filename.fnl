@@ -2,10 +2,10 @@
   {autoload {nvim aniseed.nvim
              const statusline.constant}})
 
-(fn colorize [s]
+(defn- colorize [s]
   (.. const.groups.fname s))
 
-(fn path-relative [fname]
+(defn- path-relative [fname]
   (nvim.fn.fnamemodify fname ":p:."))
 
 (defn get [bufnr]

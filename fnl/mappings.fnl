@@ -1,17 +1,17 @@
 (module mappings
   {autoload {nvim aniseed.nvim}})
 
-(fn map [mode lhs rhs opt]
+(defn- map [mode lhs rhs opt]
   (nvim.set_keymap mode lhs rhs (or opt {})))
 
-(local nmap (partial map "n"))
-(local vmap (partial map "v"))
-(local imap (partial map "i"))
-(local _map (partial map ""))
+(def- nmap (partial map "n"))
+(def- vmap (partial map "v"))
+(def- imap (partial map "i"))
+(def- _map (partial map ""))
 
-(local nowait { :nowait true})
-(local silent { :silent true})
-(local noremap-silent { :noremap true :silent true})
+(def- nowait { :nowait true})
+(def- silent { :silent true})
+(def- noremap-silent { :noremap true :silent true})
 
 (_map "<C-j>" "" nowait)
 (imap "<C-j>" "<ESC>" nowait)

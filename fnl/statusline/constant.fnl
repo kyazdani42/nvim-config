@@ -1,14 +1,14 @@
 (module statusline.constant)
 
-(local white "#ffffff")
-(local black "#1b1e2b")
-(local dark-blue "#292d3e")
-(local cyan "#89bbdd")
-(local grey "#353b52")
-(local dark-grey "#32374d")
-(local blue "#959dcb")
-(local violet "#b9a3eb")
-(local green "#d0e7d0")
+(def- white "#ffffff")
+(def- black "#1b1e2b")
+(def- dark-blue "#292d3e")
+(def- cyan "#89bbdd")
+(def- grey "#353b52")
+(def- dark-grey "#32374d")
+(def- blue "#959dcb")
+(def- violet "#b9a3eb")
+(def- green "#d0e7d0")
 
 (def colors 
   {:STNormalFlatMD   {:guifg dark-grey :guibg black}

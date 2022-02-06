@@ -1,7 +1,7 @@
 (module plugins.bufferline
   {autoload {bufferline bufferline}})
 
-(local options
+(def- options
   {:view "default"
    :buffer_close_icon ""
    :modified_icon "✗"
@@ -18,15 +18,15 @@
    :always_show_bufferline true
    :sort_by "directory"})
 
-(local bg_def "#1b1e2b")
-(local bg_sel "#121622")
-(local fg_def "#a6accd")
-(local red "#df4344")
-(local cyan "#89ddff")
+(def- bg_def "#1b1e2b")
+(def- bg_sel "#121622")
+(def- fg_def "#a6accd")
+(def- red "#df4344")
+(def- cyan "#89ddff")
 
-(local default {:guifg fg_def :guibg bg_def})
+(def- default {:guifg fg_def :guibg bg_def})
 
-(local highlights 
+(def- highlights 
   {
    :fill default
    :background default 

@@ -1,16 +1,14 @@
 (module lsp.utils
   {autoload {nvim aniseed.nvim}})
 
-(local noremap-silent {:noremap true :silent true})
+(def- noremap-silent {:noremap true :silent true})
 
-(fn buf-map [bufnr ...]
-  (let [p [...]]
-    (nvim.buf_set_keymap bufnr (?. p 1) (?. p 2) (?. p 3) noremap-silent)))
+(defn- buf-map [bufnr mode left right]
+  (nvim.buf_set_keymap bufnr mode left right noremap-silent))
 
 (defn on_attach [_ bufnr]
-  (let [map (partial buf-map bufnr)
-        nmap (partial map "n")
-        vmap (partial map "v")]
+  (let [nmap (partial buf-map bufnr "n")
+        vmap (partial buf-map bufnr "v")]
     (nmap "K"          "<cmd>lua require'lspsaga.hover'.render_hover_doc()<CR>")
     (nmap "<leader>cc" "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>")
     (nmap "<leader>ca" "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>")

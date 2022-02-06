@@ -4,7 +4,7 @@
              actions telescope.actions
              sorters telescope.sorters}})
 
-(local ivy
+(def- ivy
   {:theme "ivy"
    :borderchars {:preview ["─" "│" "─" "│" "┌" "┐" "┘" "└"]}})
 

@@ -5,7 +5,7 @@
              fname statusline.filename
              git statusline.git}})
 
-(fn get-mode-data []
+(defn- get-mode-data []
   (let [mode-name (?. (nvim.get_mode) :mode)]
     (let [mode (?. const.modes mode-name)]
       (if (a.nil? mode)
@@ -16,27 +16,27 @@
   (let [mode (get-mode-data)]
     {:value (.. mode.color mode.val) :length (length mode.val) :color mode.color}))
 
-(fn get-ft-formatted [bufnr]
+(defn- get-ft-formatted [bufnr]
   (let [ft (nvim.buf_get_option bufnr :ft)]
     (if (= ft "")
       ""
       (string.format "%s |" ft))))
 
-(fn get-num-lines [bufnr]
+(defn- get-num-lines [bufnr]
   (length (nvim.buf_get_lines bufnr 0 -1 false)))
 
-(fn get-row-col-formatted [num-lines]
+(defn- get-row-col-formatted [num-lines]
   (let [(_ row col) (unpack (nvim.fn.getpos "."))]
     (string.format "%s:%s | %s%%%% |" row col (math.floor (* 100 (/ row num-lines))))))
 
-(fn get-buf-info [bufnr mode-color]
+(defn- get-buf-info [bufnr mode-color]
   (let [ft (get-ft-formatted bufnr)
         num-lines (get-num-lines bufnr)
         row-col-percent (get-row-col-formatted num-lines)
         formatted (string.format " %s %s %s " ft row-col-percent num-lines)]
     {:value (.. (string.gsub mode-color "MD" "Info") formatted) :length (length formatted)}))
 
-(fn format-line [content]
+(defn- format-line [content]
   (let [left-side (.. content.mode.value content.filename.value)
         right-side (.. content.git.value content.bufinfo.value)
         total-size (nvim.win_get_width 0)

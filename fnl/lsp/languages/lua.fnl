@@ -2,17 +2,17 @@
   {autoload {lspconfig lspconfig
              utils lsp.utils}})
 
-(local luapath (.. (vim.fn.stdpath "cache") "lspconfigs/sumneko_lua"))
-(local luabin (vim.fn.system "whereis lua-language-server | awk print '{$2}'"))
+(def- luapath (.. (vim.fn.stdpath "cache") "lspconfigs/sumneko_lua"))
+(def- luabin (vim.fn.system "whereis lua-language-server | awk print '{$2}'"))
 
-(local workspace
+(def- workspace
   {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
              (vim.fn.expand "$VIMRUNTIME/lua/vim/lsp") true}})
 
-(local diagnostics
+(def- diagnostics
    {:globals ["vim" "map" "filter" "range" "reduce" "head" "tail" "nth" "use" "describe" "it" "dump"]})
 
-(local runtime
+(def- runtime
    {:version "LuaJIT"
     :path (vim.split package.path ";")})
 

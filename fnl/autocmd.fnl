@@ -1,6 +1,6 @@
 (module autocmd)
 
-(fn autocmd [name where func]
+(defn- autocmd [name where func]
   (vim.cmd (string.format "au %s %s %s" name where func)))
 
 (autocmd "BufWinEnter" "*" (string.format "exec \"%s\"" "normal! g'\\\""))

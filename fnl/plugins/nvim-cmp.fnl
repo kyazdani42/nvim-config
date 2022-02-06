@@ -5,11 +5,11 @@
 
 (lspkind.init)
 
-(fn complete []
+(defn- complete []
   (if (not (cmp.visible))
     (cmp.complete)))
 
-(fn snip [args]
+(defn- snip [args]
   ((. nvim.fn "vsnip#anonymous") args.body))
 
 (cmp.setup
@@ -25,8 +25,8 @@
                             :c complete})}
    :sources [{:name "nvim_lua"}
              {:name "nvim_lsp"}
-             {:name "path" :keyword_length 4 }
-             {:name "buffer" :keyword_length 6 }]
+             {:name "path" :keyword_length 4}
+             {:name "buffer" :keyword_length 6}]
 
    :formatting {:format (lspkind.cmp_format 
                           {:with_text true

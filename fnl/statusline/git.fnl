@@ -3,29 +3,29 @@
              a aniseed.core
              const statusline.constant}})
 
-(local branch-by-name {})
+(def- branch-by-name {})
 
-(fn to-escaped-path [fname]
+(defn- to-escaped-path [fname]
   (nvim.fn.fnameescape (nvim.fn.fnamemodify fname ":p:h")))
 
-(fn format-cmd [cwd]
+(defn- format-cmd [cwd]
   (string.format "git -C %s rev-parse --abbrev-ref HEAD" cwd))
 
-(fn git-rev-parse [fname]
+(defn- git-rev-parse [fname]
   (string.gsub (nvim.fn.system (format-cmd (to-escaped-path fname))) "\n" ""))
 
-(fn set-branch [fname]
+(defn- set-branch [fname]
   (when (not (?. branch-by-name fname))
     (tset branch-by-name fname (git-rev-parse fname))))
 
-(fn format-branch [branch]
+(defn- format-branch [branch]
   (string.format "%s%s" const.groups.git branch))
 
-(fn pad-branch-name [branch]
+(defn- pad-branch-name [branch]
   (string.format " %s " branch))
 
 
-(fn is-git-branch? [branch]
+(defn- is-git-branch? [branch]
   (a.nil? (string.match branch "fatal")))
 
 (defn get-branch [fname]
