@@ -1,2 +1,3 @@
 vim.g['aniseed#env'] = true
-require 'plugins'
+-- force initializing before plugins
+require "init"
