@@ -29,12 +29,6 @@
 
     (use "~/dev/plugins/playground")
 
-    (use "~/dev/plugins/tree.nvim/tree.nvim"
-         {:config (fn [] 
-                    (let [(ok? tree) (pcall require :tree)]
-                      (when ok?
-                        (tree.setup))))})
-
     (use :nvim-lua/plenary.nvim)
 
     (use :cljoly/telescope-repo.nvim)
