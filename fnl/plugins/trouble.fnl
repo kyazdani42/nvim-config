@@ -6,5 +6,5 @@
              :hint ""
              :information ""
              :other ""})
-             
+
 (trouble.setup {:indent_lines false :signs icons})

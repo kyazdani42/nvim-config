@@ -61,7 +61,7 @@
 
     (use :folke/twilight.nvim
          {:config (fn [] (require :plugins.twilight))})
-                                   
+
     (use :eraserhd/parinfer-rust
          {:run "cargo build --release"})
 
