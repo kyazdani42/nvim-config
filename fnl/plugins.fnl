@@ -2,15 +2,13 @@
   {autoload {packer packer
              a aniseed.core}})
 
-(vim.cmd "packadd! packer.nvim")
-
 (defn- override-use [use]
   (fn [name opts]
     (use (a.assoc (or opts {}) 1 name))))
 
 (defn defn-plugins [u]
   (let [use (override-use u)]
-    (use :wbthomason/packer.nvim {:opt true})
+    (use :wbthomason/packer.nvim)
     (use :Olical/aniseed)
     (use :Olical/conjure
          {:config (fn [] (require :plugins.conjure))})

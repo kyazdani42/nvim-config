@@ -51,5 +51,5 @@
                              :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
    :git {:enable true
          :ignore true
-         :timeout 400}}
-  :actions {:change_dir {:global true}})
+         :timeout 400}
+   :actions {:change_dir {:global true}}})
