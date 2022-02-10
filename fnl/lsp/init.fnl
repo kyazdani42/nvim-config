@@ -6,7 +6,7 @@
    require {_ lsp.diagnostics}})
 
 (defn- get-location-from [result]
-  (if (vim.tbl_islist result) (first result) result))
+  (if (vim.tbl_islist result) (a.first result) result))
 
 (defn- jump-to [result]
   (vim.lsp.util.jump_to_location (get-location-from result)))
