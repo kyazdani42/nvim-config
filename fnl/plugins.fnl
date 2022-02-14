@@ -13,19 +13,19 @@
     (use :Olical/conjure
          {:config (fn [] (require :plugins.conjure))})
 
-    (use "~/dev/plugins/blue-moon"
+    (use "~/dev/nvim/plugins/blue-moon"
          {:config (fn [] (vim.cmd "colorscheme blue-moon"))})
 
-    (use "~/dev/plugins/nvim-web-devicons"
+    (use "~/dev/nvim/plugins/nvim-web-devicons"
          {:config (fn [] (require :plugins.web-devicons))})
 
-    (use "~/dev/plugins/nvim-tree.lua"
+    (use "~/dev/nvim/plugins/nvim-tree.lua"
          {:config (fn [] (require :plugins.nvim-tree))})
 
-    (use "~/dev/plugins/nvim-treesitter"
+    (use "~/dev/nvim/plugins/nvim-treesitter"
          {:config (fn [] (require :plugins.treesitter))})
 
-    (use "~/dev/plugins/playground")
+    (use "~/dev/nvim/plugins/playground")
 
     (use :nvim-lua/plenary.nvim)
 
