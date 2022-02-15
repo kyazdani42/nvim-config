@@ -23,4 +23,4 @@
 (let [capabilities (cmp-nvim-lsp.update_capabilities (vim.lsp.protocol.make_client_capabilities))]
   (a.run! 
     (lambda [lang] ((. (require (.. "lsp.languages." lang)) :setup) capabilities))
-    [:lua :ecma :rust :go :graphql :haskell :rnix]))
+    [:lua :ecma :rust :go :graphql :haskell :rnix :yaml]))
