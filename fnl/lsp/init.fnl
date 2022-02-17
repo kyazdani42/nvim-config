@@ -9,7 +9,7 @@
   (if (vim.tbl_islist result) (a.first result) result))
 
 (defn- jump-to [result]
-  (vim.lsp.util.jump_to_location (get-location-from result)))
+  (vim.lsp.util.jump_to_location (get-location-from result) :utf-8))
 
 (defn- handler [err result]
   (if (a.string? err)
