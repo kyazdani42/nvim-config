@@ -34,6 +34,7 @@
    :auto_close    false
    :hijack_cursor true
    :update_cwd    true
+   :hijack_unnamed_buffer_when_opening true
    :update_focused_file {:enable true
                          :update_cwd true
                          :ignore_list ["fzf" "help" "git"]}
