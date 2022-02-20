@@ -33,4 +33,6 @@
   (nvim.ex.highlight "TelescopeResultsBorder  guifg=#444267")
   (nvim.ex.highlight "TelescopeMatching       guifg=#ffcb6b"))
 
+(apply-colorscheme)
+
 (nvim.ex.au "ColorScheme * lua require'plugins.telescope'['apply-colorscheme']()")
