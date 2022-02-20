@@ -3,7 +3,7 @@
              utils lsp.utils}})
 
 (def- luapath (.. (vim.fn.stdpath "cache") "lspconfigs/sumneko_lua"))
-(def- luabin (vim.fn.system "whereis lua-language-server | awk print '{$2}'"))
+(def- luabin (vim.fn.system "whereis lua-language-server | awk '{print $2}'"))
 
 (def- workspace
   {:library {(vim.fn.expand "$VIMRUNTIME/lua") true
