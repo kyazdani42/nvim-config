@@ -9,10 +9,6 @@
       :folder_arrows 1})
 
 (set nvim.g.nvim_tree_group_empty 1)
-(set nvim.g.nvim_tree_window_picker_exclude 
-     {:filetype ["packer"
-                 "qf"
-                 "Trouble"]})
 (set nvim.g.nvim_tree_icons 
      {:default ""
       :git {:unstaged "✗"
@@ -46,7 +42,6 @@
    :view {:width 35
           :side "left"
           :hide_root_folder false
-          :auto_resize true
           :mappings {:custom_only false
                      :list [{:mode "n"
                              :key "<C-t>" 
@@ -55,4 +50,9 @@
          :ignore true
          :timeout 400}
    :actions {:change_dir {:global true}
-             :open_file {:quit_on_open false}}})
+             :open_file {:quit_on_open false
+                         :resize_window true
+                         :window_picker {:enable true
+                                         :exclude {:filetype ["packer"
+                                                               "qf"
+                                                               "Trouble"]}}}}})

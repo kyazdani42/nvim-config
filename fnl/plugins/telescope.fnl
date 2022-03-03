@@ -20,8 +20,6 @@
              :live_grep ivy
              :lsp_references ivy}})
 
-(telescope.load_extension "repo")
-
 (defn apply-colorscheme []
   (nvim.ex.highlight "TelescopeSelectionCaret guifg=#89ddff gui=bold")
   (nvim.ex.highlight "TelescopePromptPrefix   guifg=#89ddff gui=bold")

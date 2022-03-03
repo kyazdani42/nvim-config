@@ -28,8 +28,6 @@
     (use "~/dev/nvim/plugins/playground")
 
     (use :nvim-lua/plenary.nvim)
-
-    (use :cljoly/telescope-repo.nvim)
     (use :nvim-telescope/telescope.nvim
          {:config (fn [] (require :plugins.telescope))})
 
