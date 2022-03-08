@@ -13,7 +13,7 @@
 (autocmd "FileType" "c,cpp" "set tabstop=8 shiftwidth=4 noexpandtab")
 (autocmd "FileType" "python" "set tabstop=4 shiftwidth=4 noexpandtab")
 (autocmd "FileType" "markdown" "set tabstop=4 shiftwidth=4 conceallevel=2")
-(autocmd "FileType" "json,elixir,typescriptreact,typescript,javascript,javascriptreact,lua,html,css,graphql" "set tabstop=2 shiftwidth=2")
+(autocmd "FileType" "terraform,json,elixir,typescriptreact,typescript,javascript,javascriptreact,lua,html,css,graphql" "set tabstop=2 shiftwidth=2")
 (autocmd "BufWritePost" "*.tex" ":silent !pdflatex % &>/dev/null")
 ; avoid autocommenting on newline.
 ; needs autocmd because option is local to buffer.
