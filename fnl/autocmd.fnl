@@ -1,24 +1,26 @@
-(module autocmd)
+(module autocmd
+  {autoload {nvim aniseed.nvim
+             a    aniseed.core
+             cs   ts_context_commentstring.internal}})
 
-(defn- autocmd [name where func]
-  (vim.cmd (string.format "au %s %s %s" name where func)))
+(def- group (nvim.create_augroup :K {:clear true}))
 
-(autocmd "BufWinEnter" "*" (string.format "exec \"%s\"" "normal! g'\\\""))
-(autocmd "TextYankPost" "*" "silent! lua require'vim.highlight'.on_yank({ timeout=500 })")
-(autocmd "FileType" "scheme" "set ft=query")
-(autocmd "BufNewFile,BufRead" "*.gql*.graphql" "set ft=graphql")
-(autocmd "BufNewFile,BufRead" ".eslintrc" "set ft=json")
-(autocmd "BufNewFile,BufRead" ".prettierrc" "set ft=json")
-(autocmd "BufNewFile,BufRead" ".swcrc" "set ft=json")
-(autocmd "FileType" "c,cpp" "set tabstop=8 shiftwidth=4 noexpandtab")
-(autocmd "FileType" "python" "set tabstop=4 shiftwidth=4 noexpandtab")
-(autocmd "FileType" "markdown" "set tabstop=4 shiftwidth=4 conceallevel=2")
-(autocmd "FileType" "terraform,json,elixir,typescriptreact,typescript,javascript,javascriptreact,lua,html,css,graphql" "set tabstop=2 shiftwidth=2")
-(autocmd "BufWritePost" "*.tex" ":silent !pdflatex % &>/dev/null")
+(defn- autocmd [name opts]
+  (nvim.create_autocmd name (a.merge! {:group group} opts)))
+
+(autocmd :BufWinEnter  {:command (string.format "exec \"%s\"" "normal! g'\\\"")})
+(autocmd :TextYankPost {:callback (lambda [] (vim.highlight.on_yank {:timeout 500}))})
+
+(autocmd [:BufNewFile :BufRead] {:pattern [".eslintrc" ".prettierrc" ".swcrc"]
+                                 :command "set ft=json"})
+
+(autocmd :FileType {:pattern :scheme :command "set ft=query"})
+(autocmd :FileType {:pattern [:c :cpp :python :rust] :command "set tabstop=4 shiftwidth=4 noexpandtab"})
+(autocmd :FileType {:pattern "markdown" :command "set tabstop=4 shiftwidth=4 conceallevel=2"})
+(autocmd :FileType {:pattern [:terraform :json :elixir :typescriptreact :typescript :javascript :javascriptreact :lua :html :css :graphql] 
+                    :command "set tabstop=2 shiftwidth=2"})
 ; avoid autocommenting on newline.
 ; needs autocmd because option is local to buffer.
-(autocmd "BufEnter" "*" "setlocal formatoptions-=cro")
-
-(vim.cmd "augroup KommentaryCmd")
-(autocmd "CursorHold" "*" "lua require'ts_context_commentstring.internal'.update_commentstring()")
-(vim.cmd "augroup END")
+(autocmd :BufEnter  {:command "setlocal formatoptions-=cro"})
+(autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
+(autocmd :BufWritePost {:pattern "*.tex" :command ":silent !pdflatex % &>/dev/null"})

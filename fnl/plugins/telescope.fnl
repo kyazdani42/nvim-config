@@ -33,4 +33,4 @@
 
 (apply-colorscheme)
 
-(nvim.ex.au "ColorScheme * lua require'plugins.telescope'['apply-colorscheme']()")
+(nvim.create_autocmd :ColorScheme {:callback (. (require :plugins.telescope) :apply-colorscheme)})

@@ -70,9 +70,7 @@
 
 (update-colorscheme)
 (nvim.ex.function! "Status() \n return luaeval(\"require 'statusline'.update()\") \n endfunction")
-(nvim.ex.augroup "StatusLine")
-(nvim.ex.au!)
-(nvim.ex.au "TabEnter,WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()")
-(nvim.ex.au "BufEnter,VimEnter * setlocal statusline=%!Status()")
-(nvim.ex.au "Colorscheme * lua require'statusline'['update-colorscheme']()")
-(nvim.ex.augroup "END")
+(nvim.create_augroup :StatusLine {:clear true})
+(nvim.create_autocmd [:TabEnter :WinLeave :BufEnter :WinEnter] {:callback (. (require :statusline) :clear)})
+(nvim.create_autocmd [:BufEnter :VimEnter] {:command "setlocal statusline=%!Status()"})
+(nvim.create_autocmd :Colorscheme {:callback (. (require :statusline) :update-colorscheme)})

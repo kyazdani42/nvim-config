@@ -38,7 +38,9 @@
    :ignore_ft_on_setup ["git" "man" "help"]
    :system_open {:cmd nil
                  :args {}}
-   :filters {:dotfiles false :custom [".git" "node_modules" "dist"]}
+   :filters {:dotfiles false
+             :custom [".git"]
+             :excluded nil}
    :view {:width 35
           :side "left"
           :hide_root_folder false
