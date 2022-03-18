@@ -39,7 +39,7 @@
 (defn- format-line [content]
   (let [left-side (.. content.mode.value content.filename.value)
         right-side (.. content.git.value content.bufinfo.value)
-        total-size (nvim.win_get_width 0)
+        total-size (: vim.opt.columns :get)
         content-length (+ content.mode.length content.filename.length content.git.length content.bufinfo.length)
         padding (string.rep " " (- total-size content-length))]
     (string.format "%s%s%s%s%s" const.groups.normal-float left-side const.groups.normal-float padding right-side)))
@@ -47,7 +47,7 @@
 (defn update []
   (let [bufnr (nvim.get_current_buf)]
     (if (= (nvim.buf_get_option bufnr :ft) "NvimTree")
-      ""
+      (.. "%#SpecialComment# " (. TreeExplorer :cwd))
       (let [mode (get-mode)
             filename (fname.get bufnr)
             git (git.get-branch filename.original)
@@ -71,6 +71,5 @@
 (update-colorscheme)
 (nvim.ex.function! "Status() \n return luaeval(\"require 'statusline'.update()\") \n endfunction")
 (nvim.create_augroup :StatusLine {:clear true})
-(nvim.create_autocmd [:TabEnter :WinLeave :BufEnter :WinEnter] {:callback (. (require :statusline) :clear)})
 (nvim.create_autocmd [:BufEnter :VimEnter] {:command "setlocal statusline=%!Status()"})
 (nvim.create_autocmd :Colorscheme {:callback (. (require :statusline) :update-colorscheme)})
