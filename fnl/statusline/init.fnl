@@ -44,18 +44,30 @@
         padding (string.rep " " (- total-size content-length))]
     (string.format "%s%s%s%s%s" const.groups.normal-float left-side const.groups.normal-float padding right-side)))
 
+(defn- special-format [str]
+  (.. "%#SpecialComment# " str))
+
+(defn- get-branch-name [bufnr]
+  (. (git.get-branch (. (fname.get bufnr) :original)) :value))
+
+(defn- remove-group [str]
+  (string.gsub str "%%#.*#" ""))
+
 (defn update []
   (let [bufnr (nvim.get_current_buf)]
-    (if (= (nvim.buf_get_option bufnr :ft) "NvimTree")
-      (.. "%#SpecialComment# " (. TreeExplorer :cwd))
-      (let [mode (get-mode)
-            filename (fname.get bufnr)
-            git (git.get-branch filename.original)
-            bufinfo (get-buf-info bufnr mode.color)]
-        (format-line {:mode mode
-                      :filename filename
-                      :git git
-                      :bufinfo bufinfo})))))
+    (match (nvim.buf_get_option bufnr :ft)
+      "NvimTree" (special-format TreeExplorer.cwd)
+      "TelescopePrompt" (special-format "Telescope")
+      "NeogitStatus" (special-format (.. "Neogit:" (remove-group (get-branch-name bufnr))))
+      "fugitiveblame" (special-format "Blamer")
+      _ (let [mode (get-mode)
+              filename (fname.get bufnr)
+              git (git.get-branch filename.original)
+              bufinfo (get-buf-info bufnr mode.color)]
+          (format-line {:mode mode
+                        :filename filename
+                        :git git
+                        :bufinfo bufinfo})))))
 
 (defn clear []
   (let [dashes (string.rep "―" (nvim.win_get_width 0))]
