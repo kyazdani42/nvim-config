@@ -1,14 +1,2 @@
 plugin
-lua/init.lua
-lua/options.lua
-lua/autocmd.lua
-lua/k
-lua/utils.lua
-lua/mappings.lua
-lua/statusline
-lua/plugins
-lua/lsp/*
-lua/dump.lua
-!lua/lsp/languages/ecma.lua
-lua/lsp/utils.lua
-lua/plugins.lua
+lua
