@@ -39,7 +39,7 @@
    :system_open {:cmd nil
                  :args {}}
    :filters {:dotfiles false
-             :custom [".git"]
+             :custom ["\\.git$"]
              :excluded nil}
    :view {:width 35
           :side "left"
