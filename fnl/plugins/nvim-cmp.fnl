@@ -27,12 +27,11 @@
              {:name "nvim_lsp"}
              {:name "path" :keyword_length 4}
              {:name "buffer" :keyword_length 6}]
+   :view {:entries "native"}
 
    :formatting {:format (lspkind.cmp_format 
                           {:with_text true
                            :menu {:buffer "[Buf]"
                                   :nvim_lsp "[LSP]"
                                   :nvim_lua "[api]"
-                                  :path "[path]"}})}
-   :experimental {:native_menu false
-                  :ghost_text true}})
+                                  :path "[path]"}})}})
