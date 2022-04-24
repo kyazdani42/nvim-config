@@ -24,10 +24,8 @@
    :hijack_netrw  true
    :open_on_setup true
    :open_on_tab   true
-   :update_to_buf_dir {:enable true
-                       :auto_open true}
    :diagnostics {:enable true :show_on_dirs false}
-   :auto_close    false
+   :renderer {:indent_markers {:enable false}}
    :hijack_cursor true
    :update_cwd    true
    :hijack_unnamed_buffer_when_opening true

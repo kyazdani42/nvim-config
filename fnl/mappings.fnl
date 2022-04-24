@@ -51,7 +51,6 @@
 (nmap "<leader>bn" "<cmd>bnext<cr>" silent)
 
 (nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
-(nmap "<leader>r" ":NvimTreeRefresh<CR>" noremap-silent)
 
 (nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files()<CR>" noremap-silent)
 (nmap "<C-b>" "<cmd>lua require('telescope.builtin').buffers()<CR>" noremap-silent)
@@ -69,3 +68,15 @@
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
 (vmap "++" "<Plug>kommentary_visual_default" silent)
+
+(def- refactor "<cmd>lua require('refactoring').refactor('%s')<CR>")
+(defn refactor-cmd [cmd]
+  (string.format refactor cmd))
+
+(vmap "<leader>ref"       (refactor-cmd "Extract Function")         noremap-silent)
+(vmap "<leader>reff"      (refactor-cmd "Extract Function To File") noremap-silent)
+(vmap "<leader>rev"       (refactor-cmd "Extract Variable")         noremap-silent)
+(vmap "<leader>riv"       (refactor-cmd "Inline Variable")          noremap-silent)
+(nmap "<leader>riv"       (refactor-cmd "Inline Variable")          noremap-silent)
+(nmap "<leader>reb"       (refactor-cmd "Extract Block")            noremap-silent)
+(nmap "<leader>rebf"      (refactor-cmd "Extract Block To File")    noremap-silent)

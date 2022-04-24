@@ -46,6 +46,9 @@
     (use :norcalli/nvim-colorizer.lua
          {:config (fn [] (require :plugins.colorizer))}) 
 
+    (use :ThePrimeagen/refactoring.nvim
+         {:config (fn [] (require :plugins.refactoring))})
+
     (use :neovim/nvim-lspconfig
          {:config (fn [] (require :lsp))})
 
