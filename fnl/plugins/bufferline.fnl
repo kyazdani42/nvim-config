@@ -32,7 +32,7 @@
    :background default 
    :buffer_visible default
 
-   :buffer_selected {:guifg "normal_fg"
+   :buffer_selected {:guifg {:attribute "fg" :highlight "Normal"}
                      :guibg bg_sel
                      :gui "bold"}
 
@@ -65,14 +65,14 @@
 
    :pick_selected {:guifg cyan
                    :guibg bg_sel
-                   :gui "bolditalic"}
+                   :gui "bold,italic"}
 
    :pick_visible {:guifg cyan
                   :guibg bg_def
-                  :gui "bolditalic"}
+                  :gui "bold,italic"}
 
    :pick {:guifg cyan
           :guibg bg_def
-          :gui "bolditalic"}})
+          :gui "bold,italic"}})
 
 (bufferline.setup {:options options :highlights highlights})

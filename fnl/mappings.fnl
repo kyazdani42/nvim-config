@@ -33,9 +33,9 @@
 (nmap "<F1>" "")
 (imap "<F1>" "")
 
-(nmap "<C-u>" "<C-u>zz")
-(nmap "<C-d>" "<C-d>zz")
-(nmap "<C-f>" "<C-f>zz")
+(nmap "<C-u>" "<C-u>zz" noremap-silent)
+(nmap "<C-d>" "<C-d>zz" noremap-silent)
+(nmap "<C-f>" "<C-f>zz" noremap-silent)
 
 (nmap "<tab>" ":normal za<cr>" noremap-silent)
 
