@@ -32,7 +32,8 @@
          {:config (fn [] (require :plugins.telescope))})
 
     (use :akinsho/nvim-bufferline.lua
-         {:config (fn [] (require :plugins.bufferline))})
+         {:config (fn [] (require :plugins.bufferline))
+          :branch "main"})
 
     (use :windwp/nvim-ts-autotag
          {:config (fn [] (require :plugins.autotag))})

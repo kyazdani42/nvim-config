@@ -9,9 +9,9 @@
 (def- imap (partial map "i"))
 (def- _map (partial map ""))
 
-(def- nowait { :nowait true})
-(def- silent { :silent true})
-(def- noremap-silent { :noremap true :silent true})
+(def- nowait {:nowait true})
+(def- silent {:silent true})
+(def- noremap-silent {:noremap true :silent true})
 
 (_map "<C-j>" "" nowait)
 (imap "<C-j>" "<ESC>" nowait)

@@ -8,6 +8,10 @@
       :files 1
       :folder_arrows 1})
 
+(set nvim.g.nvim_tree_git_hl 0)
+
+(set nvim.g.nvim_tree_highlight_opened_files 0)
+
 (set nvim.g.nvim_tree_group_empty 1)
 (set nvim.g.nvim_tree_icons 
      {:default ""
@@ -25,7 +29,6 @@
    :open_on_setup true
    :open_on_tab   true
    :diagnostics {:enable true :show_on_dirs false}
-   :renderer {:indent_markers {:enable false}}
    :hijack_cursor true
    :update_cwd    true
    :hijack_unnamed_buffer_when_opening true
@@ -46,6 +49,8 @@
                      :list [{:mode "n"
                              :key "<C-t>" 
                              :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
+   :renderer {:indent_markers {:enable false}
+              :icons {:webdev_colors true :git_placement :before}}
    :git {:enable true
          :ignore true
          :timeout 400}
