@@ -32,8 +32,8 @@
 (defn- setup-linter []
   (lspconfig.efm.setup {:filetypes filetypes
                         :on_attach (lambda [client]
-                                     (set client.resolved_capabilities.document_formatting true)
-                                     (set client.resolved_capabilities.goto_definition false))
+                                     (set client.server_capabilities.document_formatting true)
+                                     (set client.server_capabilities.goto_definition false))
                         :root_dir (lambda [fname]
                                     (get-eslint-root fname))
                         :settings {:languages {:javascript [eslint-cmd prettier-cmd]
@@ -48,7 +48,7 @@
                              :cmd [:typescript-language-server :--stdio]
                              :filetypes filetypes
                              :on_attach (lambda [client bufnr]
-                                          (set client.resolved_capabilities.document_formatting false)
+                                          (set client.server_capabilities.document_formatting false)
                                           (utils.on_attach client bufnr))}))
 
 (defn setup [capabilities]

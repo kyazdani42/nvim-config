@@ -63,7 +63,7 @@
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
 
-(nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.formatting_sync()")
+(nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.format { timeout_ns = 2000 }")
 (nvim.ex.command! "Dnd" ":!dragon %")
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
