@@ -50,7 +50,7 @@
                              :key "<C-t>" 
                              :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
    :renderer {:indent_markers {:enable false}
-              :icons {:webdev_colors true :git_placement :before}}
+              :icons {:webdev_colors true :git_placement :after}}
    :git {:enable true
          :ignore true
          :timeout 400}
