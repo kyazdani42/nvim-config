@@ -2,7 +2,8 @@
   {autoload {nvim aniseed.nvim
              telescope telescope
              actions telescope.actions
-             sorters telescope.sorters}})
+             sorters telescope.sorters
+             builtin telescope.builtin}})
 
 (def- ivy
   {:theme "ivy"
@@ -32,5 +33,17 @@
   (nvim.ex.highlight "TelescopeMatching       guifg=#ffcb6b"))
 
 (apply-colorscheme)
+
+(defn- live-grep [dir]
+  (let [finder (. builtin :live_grep)]
+    (if dir
+      (finder {:search_dirs [dir]})
+      (finder))))
+
+(defn live-grep-input []
+  (vim.ui.input {:prompt "directory (optional): "
+                 :completion :dir} live-grep))
+
+(nvim.create_user_command :TLiveGrep live-grep-input {})
 
 (nvim.create_autocmd :ColorScheme {:callback (. (require :plugins.telescope) :apply-colorscheme)})

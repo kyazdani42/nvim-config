@@ -48,7 +48,7 @@
           :mappings {:custom_only false
                      :list [{:mode "n"
                              :key "<C-t>" 
-                             :cb "<cmd>lua require'telescope.builtin'.live_grep()<cr>"}]}}
+                             :cb "<cmd>TLiveGrep<cr>"}]}}
    :renderer {:indent_markers {:enable false}
               :icons {:webdev_colors true :git_placement :after}}
    :git {:enable true

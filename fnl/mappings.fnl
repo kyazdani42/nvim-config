@@ -52,9 +52,9 @@
 
 (nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
 
-(nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files()<CR>" noremap-silent)
+(nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>" noremap-silent)
 (nmap "<C-b>" "<cmd>lua require('telescope.builtin').buffers()<CR>" noremap-silent)
-(nmap "<C-t>" "<cmd>lua require('telescope.builtin').live_grep()<CR>" noremap-silent)
+(nmap "<C-t>" "<cmd>TLiveGrep<CR>" noremap-silent)
 (nmap "<leader>p" "<cmd>Telescope repo list<cr>" silent)
 
 (nmap "R" ":write | edit | TSBufEnable highlight<CR>")
