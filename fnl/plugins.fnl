@@ -88,6 +88,7 @@
     (use :tpope/vim-fugitive)
     (use :TimUntersberger/neogit)
     (use :editorconfig/editorconfig)
+    (use :milisims/nvim-luaref)
     (use :Saecki/crates.nvim)))
 
 (packer.startup defn-plugins)

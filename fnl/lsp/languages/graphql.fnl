@@ -3,4 +3,5 @@
              utils lsp.utils}})
 
 (defn setup []
-  (lspconfig.graphql.setup {:on_attach utils.on_attach}))
+  (lspconfig.graphql.setup {:on_attach utils.on_attach
+                            :filetypes [:graphql]}))
