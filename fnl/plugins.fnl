@@ -75,6 +75,9 @@
     (use :hrsh7th/nvim-cmp
          {:config (fn [] (require :plugins.nvim-cmp))})
 
+    (use :folke/which-key.nvim
+         {:config (fn [] (require :plugins.which-key))})
+
     (use :onsails/lspkind-nvim)
     (use :hrsh7th/cmp-cmdline)
     (use :hrsh7th/cmp-buffer)

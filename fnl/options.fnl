@@ -34,5 +34,6 @@
 (set vim.opt.tabstop 4)
 (set vim.opt.smartindent true)
 (set vim.opt.laststatus 3)
+(set vim.opt.timeoutlen 500)
 (set vim.g.mapleader "\\")
 (nvim.ex.set "shortmess+=c")

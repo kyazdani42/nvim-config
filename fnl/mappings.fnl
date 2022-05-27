@@ -55,7 +55,6 @@
 (nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>" noremap-silent)
 (nmap "<C-b>" "<cmd>lua require('telescope.builtin').buffers()<CR>" noremap-silent)
 (nmap "<C-t>" "<cmd>TLiveGrep<CR>" noremap-silent)
-(nmap "<leader>p" "<cmd>Telescope repo list<cr>" silent)
 
 (nmap "<leader>f" "<cmd>Format<CR>" noremap-silent)
 
