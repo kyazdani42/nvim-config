@@ -24,3 +24,11 @@
 (autocmd :BufEnter  {:command "setlocal formatoptions-=cro"})
 (autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
 (autocmd :BufWritePost {:pattern "*.tex" :command ":silent !pdflatex % &>/dev/null"})
+
+
+(def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man"])
+
+(autocmd :FileType {:callback (lambda []
+                                (let [ft vim.o.filetype]
+                                  (when (not (vim.tbl_contains disabled-filetypes ft)) 
+                                    (vim.cmd ":setlocal winbar=%m\\ %f"))))})

@@ -57,13 +57,15 @@
 (nmap "<C-t>" "<cmd>TLiveGrep<CR>" noremap-silent)
 (nmap "<leader>p" "<cmd>Telescope repo list<cr>" silent)
 
+(nmap "<leader>f" "<cmd>Format<CR>" noremap-silent)
+
 (nmap "R" ":write | edit | TSBufEnable highlight<CR>")
 
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
 
-(nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.format { timeout_ns = 2000 }")
+(nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.format { timeout_ms = 2000, async = false }")
 (nvim.ex.command! "Dnd" ":!dragon %")
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
@@ -73,10 +75,10 @@
 (defn refactor-cmd [cmd]
   (string.format refactor cmd))
 
-(vmap "<leader>ref"       (refactor-cmd "Extract Function")         noremap-silent)
-(vmap "<leader>reff"      (refactor-cmd "Extract Function To File") noremap-silent)
-(vmap "<leader>rev"       (refactor-cmd "Extract Variable")         noremap-silent)
-(vmap "<leader>riv"       (refactor-cmd "Inline Variable")          noremap-silent)
-(nmap "<leader>riv"       (refactor-cmd "Inline Variable")          noremap-silent)
-(nmap "<leader>reb"       (refactor-cmd "Extract Block")            noremap-silent)
-(nmap "<leader>rebf"      (refactor-cmd "Extract Block To File")    noremap-silent)
+(vmap "<leader>ref"  (refactor-cmd "Extract Function")         noremap-silent)
+(vmap "<leader>reff" (refactor-cmd "Extract Function To File") noremap-silent)
+(vmap "<leader>rev"  (refactor-cmd "Extract Variable")         noremap-silent)
+(vmap "<leader>riv"  (refactor-cmd "Inline Variable")          noremap-silent)
+(nmap "<leader>riv"  (refactor-cmd "Inline Variable")          noremap-silent)
+(nmap "<leader>reb"  (refactor-cmd "Extract Block")            noremap-silent)
+(nmap "<leader>rebf" (refactor-cmd "Extract Block To File")    noremap-silent)
