@@ -11,7 +11,7 @@
 (set vim.opt.confirm true)
 (set vim.opt.scrolloff 8)
 (set vim.opt.incsearch true)
-(set vim.opt.splitright true)
+(set vim.opt.splitright false)
 (set vim.opt.splitbelow true)
 (set vim.opt.wildmenu true)
 (set vim.opt.wildmode :full)

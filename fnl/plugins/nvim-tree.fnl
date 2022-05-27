@@ -43,7 +43,7 @@
              :custom ["\\.git$"]
              :excluded nil}
    :view {:width 35
-          :side "left"
+          :side "right"
           :hide_root_folder false
           :mappings {:custom_only false
                      :list [{:mode "n"
