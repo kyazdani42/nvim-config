@@ -26,7 +26,7 @@
 (autocmd :BufWritePost {:pattern "*.tex" :command ":silent !pdflatex % &>/dev/null"})
 
 
-(def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man"])
+(def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man" "packer"])
 
 (autocmd :FileType {:callback (lambda []
                                 (let [ft vim.o.filetype]
