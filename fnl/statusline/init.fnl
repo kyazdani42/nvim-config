@@ -56,7 +56,7 @@
 (defn update []
   (let [bufnr (nvim.get_current_buf)]
     (match (nvim.buf_get_option bufnr :ft)
-      "NvimTree" (special-format TreeExplorer.cwd)
+      "NvimTree" (special-format TreeExplorer.absolute_path)
       "TelescopePrompt" (special-format "Telescope")
       "NeogitStatus" (special-format (.. "Neogit:" (remove-group (get-branch-name bufnr))))
       "fugitiveblame" (special-format "Blamer")

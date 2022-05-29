@@ -2,27 +2,6 @@
   {autoload {nvim aniseed.nvim
              tree nvim-tree}})
 
-(set nvim.g.nvim_tree_show_icons 
-     {:git 1
-      :folders 1
-      :files 1
-      :folder_arrows 1})
-
-(set nvim.g.nvim_tree_git_hl 0)
-
-(set nvim.g.nvim_tree_highlight_opened_files 0)
-
-(set nvim.g.nvim_tree_group_empty 1)
-(set nvim.g.nvim_tree_icons 
-     {:default ""
-      :git {:unstaged "✗"
-            :staged "✓"
-            :unmerged ""
-            :renamed "➜"
-            :untracked "★"}
-      :folder {:default ""
-               :open ""}})
-
 (tree.setup
   {:disable_netrw true
    :hijack_netrw  true
@@ -42,15 +21,33 @@
    :filters {:dotfiles false
              :custom ["\\.git$"]
              :excluded nil}
-   :view {:width 35
+   :view {:width 30
+          :adaptive_size true
           :side "right"
           :hide_root_folder false
           :mappings {:custom_only false
                      :list [{:mode "n"
                              :key "<C-t>" 
                              :cb "<cmd>TLiveGrep<cr>"}]}}
-   :renderer {:indent_markers {:enable false}
-              :icons {:webdev_colors true :git_placement :after}}
+   :renderer {:group_empty true
+              :highlight_git false
+              :highlight_opened_files "none"
+              :indent_markers {:enable false}
+              :icons {:webdev_colors true
+                      :git_placement :after
+                      :show {:file true
+                             :folder true
+                             :folder_arrow true
+                             :git true}
+                      :padding " "
+                      :symlink_arrow " ➛ "
+                      :glyphs {:default ""
+                               :folder {:default "" :open ""}
+                               :git {:unstaged "✗"
+                                     :staged "✓"
+                                     :unmerged ""
+                                     :renamed "➜"
+                                     :untracked "★"}}}}
    :git {:enable true
          :ignore true
          :timeout 400}
