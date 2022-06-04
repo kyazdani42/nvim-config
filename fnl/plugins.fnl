@@ -31,38 +31,42 @@
     (use :nvim-telescope/telescope.nvim
          {:config (fn [] (require :plugins.telescope))})
 
+    ; templating tag sync
     (use :windwp/nvim-ts-autotag
          {:config (fn [] (require :plugins.autotag))})
 
     (use :lewis6991/gitsigns.nvim
          {:config (fn [] (require :plugins.gitsigns))})
 
+    ; comment plugin
     (use :b3nj5m1n/kommentary
          {:config (fn [] (require :plugins.kommentary))})
 
     (use :norcalli/nvim-colorizer.lua
          {:config (fn [] (require :plugins.colorizer))}) 
 
+    ; refactoring patterns
     (use :ThePrimeagen/refactoring.nvim
          {:config (fn [] (require :plugins.refactoring))})
 
     (use :neovim/nvim-lspconfig
          {:config (fn [] (require :lsp))})
 
+    ; native lsp improvements
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :plugins.lsp-saga))})
 
+    ; lsp diagnostics management
     (use :folke/trouble.nvim
          {:config (fn [] (require :plugins.trouble))})
 
+    ; simplify highlighting
     (use :folke/twilight.nvim
          {:config (fn [] (require :plugins.twilight))})
 
+    ; lisps auto parens and format
     (use :eraserhd/parinfer-rust
          {:run "cargo build --release"})
-
-    (use :pwntester/octo.nvim
-         {:config (fn [] ((. (require :octo) :setup)))})
 
     ; needed for nvim-cmp to function properly
     (use :hrsh7th/vim-vsnip)
@@ -71,20 +75,31 @@
     (use :hrsh7th/nvim-cmp
          {:config (fn [] (require :plugins.nvim-cmp))})
 
+    ; icons for completion
     (use :onsails/lspkind-nvim)
+
+    ; cmp completion plugins
     (use :hrsh7th/cmp-cmdline)
     (use :hrsh7th/cmp-buffer)
     (use :hrsh7th/cmp-path)
     (use :hrsh7th/cmp-nvim-lua)
     (use :hrsh7th/cmp-nvim-lsp)
     (use :hrsh7th/cmp-nvim-lsp-document-symbol)
+
+    (use :tpope/vim-surround)
+    (use :editorconfig/editorconfig)
+
     (use :nvim-treesitter/nvim-treesitter-textobjects)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
-    (use :tpope/vim-surround)
+
+    ; git
     (use :tpope/vim-fugitive)
     (use :TimUntersberger/neogit)
-    (use :editorconfig/editorconfig)
+
+    ; lua 5.1 reference documentation
     (use :milisims/nvim-luaref)
+
+    ; rust dependency management plugin
     (use :Saecki/crates.nvim)))
 
 (packer.startup defn-plugins)
