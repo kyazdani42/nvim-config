@@ -52,6 +52,8 @@
     (use :neovim/nvim-lspconfig
          {:config (fn [] (require :lsp))})
 
+    (use :b0o/schemastore.nvim)
+
     ; native lsp improvements
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :plugins.lsp-saga))})
@@ -82,7 +84,6 @@
     (use :hrsh7th/cmp-cmdline)
     (use :hrsh7th/cmp-buffer)
     (use :hrsh7th/cmp-path)
-    (use :hrsh7th/cmp-nvim-lua)
     (use :hrsh7th/cmp-nvim-lsp)
     (use :hrsh7th/cmp-nvim-lsp-document-symbol)
 
@@ -98,6 +99,11 @@
 
     ; lua 5.1 reference documentation
     (use :milisims/nvim-luaref)
+    ; lua neovim api completion
+    (use :folke/lua-dev.nvim)
+
+    ; statusline stuff
+    (use :SmiteshP/nvim-gps)
 
     ; rust dependency management plugin
     (use :Saecki/crates.nvim)))

@@ -1,5 +1,6 @@
 (module plugins.treesitter
   {autoload {nvim aniseed.nvim
+             nvim-gps nvim-gps
              configs nvim-treesitter.configs}})
 
 (configs.setup
@@ -23,3 +24,4 @@
    :context_commentstring {:enable true
                            :enable_autocmd false}})
 
+(nvim-gps.setup)

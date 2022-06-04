@@ -3,6 +3,7 @@
              a aniseed.core
              const statusline.constant
              fname statusline.filename
+             gps nvim-gps
              git statusline.git}})
 
 (defn- get-mode-data []
@@ -37,10 +38,10 @@
     {:value (.. (string.gsub mode-color "MD" "Info") formatted) :length (length formatted)}))
 
 (defn- format-line [content]
-  (let [left-side (.. content.mode.value content.filename.value)
+  (let [left-side (.. content.mode.value content.filename.value content.gps.value)
         right-side (.. content.git.value content.bufinfo.value)
         total-size (: vim.opt.columns :get)
-        content-length (+ content.mode.length content.filename.length content.git.length content.bufinfo.length)
+        content-length (+ content.mode.length content.filename.length content.gps.length content.git.length content.bufinfo.length)
         padding (string.rep " " (- total-size content-length))]
     (string.format "%s%s%s%s%s" const.groups.normal-float left-side const.groups.normal-float padding right-side)))
 
@@ -53,6 +54,18 @@
 (defn- remove-group [str]
   (string.gsub str "%%#.*#" ""))
 
+(def- empty {:length 0 :value ""})
+
+(defn- get-gps []
+  (if (gps.is_available)
+    (let [loc (gps.get_location)
+          formatted (.. " ➛ " loc " ")]
+      (if (> (# loc) 0)
+        {:length (string.len formatted)
+         :value (string.format "%s%s%s" const.groups.cursorline formatted const.groups.normal-float)}
+        empty))
+    empty))
+
 (defn update []
   (let [bufnr (nvim.get_current_buf)]
     (match (nvim.buf_get_option bufnr :ft)
@@ -62,11 +75,13 @@
       "fugitiveblame" (special-format "Blamer")
       _ (let [mode (get-mode)
               filename (fname.get bufnr)
+              gps (get-gps)
               git (git.get-branch filename.original)
               bufinfo (get-buf-info bufnr mode.color)]
           (format-line {:mode mode
                         :filename filename
                         :git git
+                        :gps gps
                         :bufinfo bufinfo})))))
 
 (defn clear []

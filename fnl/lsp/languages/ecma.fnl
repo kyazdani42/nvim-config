@@ -13,7 +13,7 @@
 (def- prettier-cmd {:formatCommand "prettier --stdin-filepath ${INPUT}"
                     :formatStdin true})
 
-(def- filetypes [:javascript :javascriptreact :javascript.jsx :typescript :typescriptreact :typescript.tsx])
+(def- filetypes [:javascript :javascriptreact :javascript.jsx :typescript :typescriptreact :typescript.tsx :json :jsonc :graphql])
 
 (defn- root-pattern [fname ...]
   (((. (require :lspconfig.util) :root_pattern) ...) fname))
@@ -41,7 +41,9 @@
                                                :javascript.jsx [eslint-cmd prettier-cmd]
                                                :typescript [eslint-cmd prettier-cmd]
                                                :typescript.tsx [eslint-cmd prettier-cmd]
-                                               :typescriptreact [eslint-cmd prettier-cmd]}}}))
+                                               :typescriptreact [eslint-cmd prettier-cmd]
+                                               :json [prettier-cmd]
+                                               :jsonc [prettier-cmd]}}}))
 
 (defn- setup-ts [capabilities]
   (lspconfig.tsserver.setup {:capabilities capabilities
