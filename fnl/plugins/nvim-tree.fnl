@@ -2,8 +2,33 @@
   {autoload {nvim aniseed.nvim
              tree nvim-tree}})
 
+(def- renderer-config {:group_empty true
+                       :highlight_git false
+                       :highlight_opened_files "none"
+                       :indent_markers {:enable false}
+                       :icons {:webdev_colors true
+                               :git_placement :after
+                               :padding " "
+                               :symlink_arrow " ➛ "
+                               :show {:file true
+                                      :folder true
+                                      :folder_arrow true
+                                      :git true}
+                               :glyphs {:default ""
+                                        :folder {:default "" :open ""}
+                                        :git {:unstaged "✗"
+                                              :staged "✓"
+                                              :unmerged ""
+                                              :renamed "➜"
+                                              :untracked "★"}}}})
+
+(def- open-file-config {:quit_on_open false
+                         :resize_window true
+                         :window_picker {:enable true :exclude {:filetype ["packer" "qf" "Trouble"]}}})
+
 (tree.setup
   {:disable_netrw true
+   :filesystem_watchers {:enable true :interval 100}
    :hijack_netrw  true
    :open_on_setup true
    :open_on_tab   true
@@ -29,32 +54,10 @@
                      :list [{:mode "n"
                              :key "<C-t>" 
                              :cb "<cmd>TLiveGrep<cr>"}]}}
-   :renderer {:group_empty true
-              :highlight_git false
-              :highlight_opened_files "none"
-              :indent_markers {:enable false}
-              :icons {:webdev_colors true
-                      :git_placement :after
-                      :show {:file true
-                             :folder true
-                             :folder_arrow true
-                             :git true}
-                      :padding " "
-                      :symlink_arrow " ➛ "
-                      :glyphs {:default ""
-                               :folder {:default "" :open ""}
-                               :git {:unstaged "✗"
-                                     :staged "✓"
-                                     :unmerged ""
-                                     :renamed "➜"
-                                     :untracked "★"}}}}
+   :log {:enable false :types {:git true :watcher true}}
+   :renderer renderer-config
    :git {:enable true
          :ignore true
          :timeout 400}
    :actions {:change_dir {:global true}
-             :open_file {:quit_on_open false
-                         :resize_window true
-                         :window_picker {:enable true
-                                         :exclude {:filetype ["packer"
-                                                               "qf"
-                                                               "Trouble"]}}}}})
+             :open_file open-file-config}})

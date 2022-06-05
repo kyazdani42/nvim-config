@@ -49,6 +49,9 @@
 (nmap "<leader>bd" "<cmd>lua K['delete-hidden-bufs']()<cr>" silent)
 (nmap "<leader>bp" "<cmd>bprev<cr>" silent)
 (nmap "<leader>bn" "<cmd>bnext<cr>" silent)
+(nmap "<leader>bb" "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>" noremap-silent)
+(nmap "<leader>bt" "<cmd>Telescope harpoon marks<CR>" noremap-silent)
+(nmap "<leader>bm" "<cmd>lua require('harpoon.mark').add_file()<CR>" noremap-silent)
 
 (nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
 

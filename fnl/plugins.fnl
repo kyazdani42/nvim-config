@@ -89,6 +89,8 @@
 
     (use :tpope/vim-surround)
     (use :editorconfig/editorconfig)
+    (use :ThePrimeagen/harpoon
+         {:config (fn [] (require "plugins.harpoon"))})
 
     (use :nvim-treesitter/nvim-treesitter-textobjects)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
