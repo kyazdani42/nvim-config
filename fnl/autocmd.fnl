@@ -1,6 +1,7 @@
 (module autocmd
   {autoload {nvim aniseed.nvim
              a    aniseed.core
+             env  aniseed.env
              cs   ts_context_commentstring.internal}})
 
 (def- group (nvim.create_augroup :K {:clear true}))
@@ -32,3 +33,8 @@
                                 (let [ft vim.o.filetype]
                                   (when (not (vim.tbl_contains disabled-filetypes ft)) 
                                     (vim.cmd ":setlocal winbar=%m\\ %f"))))})
+
+(autocmd :BufWritePost
+         {:pattern "*.fnl"
+          :callback (lambda []
+                      (env.init nvim.g.aniseed#env))})

@@ -2,5 +2,7 @@
   {autoload {lspconfig lspconfig
              utils lsp.utils}})
 
-(defn setup []
-  (lspconfig.rust_analyzer.setup {:on_attach utils.on_attach}))
+(defn setup [cap]
+  (lspconfig.rust_analyzer.setup 
+    {:on_attach utils.on_attach 
+     :capabilities cap}))
