@@ -13,6 +13,7 @@
   {:defaults {:prompt_prefix " "
               :layout_config {:height 15}
               :file_sorter  sorters.get_fzy_sorter
+              :file_ignore_patterns [".git/*"]
               :mappings {:i {"<esc>" actions.close
                              "<C-j>" actions.move_selection_next
                              "<C-k>" actions.move_selection_previous}}}
