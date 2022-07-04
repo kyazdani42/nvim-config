@@ -13,7 +13,8 @@
 (def- prettier-cmd {:formatCommand "prettier --stdin-filepath ${INPUT}"
                     :formatStdin true})
 
-(def- filetypes [:javascript :javascriptreact :javascript.jsx :typescript :typescriptreact :typescript.tsx :json :jsonc :graphql])
+(def- filetypes [:javascript :javascriptreact :javascript.jsx :typescript :typescriptreact :typescript.tsx])
+(def- linter-filetypes (a.concat filetypes [:graphql :css :html :json :jsonc]))
 
 (defn- root-pattern [fname ...]
   (((. (require :lspconfig.util) :root_pattern) ...) fname))
@@ -30,7 +31,7 @@
             package-json-root))))))
 
 (defn- setup-linter []
-  (lspconfig.efm.setup {:filetypes filetypes
+  (lspconfig.efm.setup {:filetypes linter-filetypes
                         :on_attach (lambda [client]
                                      (set client.server_capabilities.documentFormattingProvider true)
                                      (set client.server_capabilities.gotoDefinition false))
