@@ -40,4 +40,7 @@
          :name "graphql"}
    :fnl {:icon ""
          :color "#fff3d7"
-         :name "fennel"}})
+         :name "fennel"}
+   :md {:icon ""
+        :color "#89bbdd"
+        :name "Md"}})
