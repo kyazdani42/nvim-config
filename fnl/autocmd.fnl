@@ -31,8 +31,9 @@
 
 (autocmd :FileType {:callback (lambda []
                                 (let [ft vim.o.filetype]
-                                  (when (not (vim.tbl_contains disabled-filetypes ft)) 
-                                    (vim.cmd ":setlocal winbar=%m\\ %f"))))})
+                                  (if (vim.tbl_contains disabled-filetypes ft) 
+                                    (set vim.wo.winbar " ")
+                                    (set vim.wo.winbar "%m %f"))))})
 
 (autocmd :BufWritePost
          {:pattern "*.fnl"
