@@ -1,4 +1,4 @@
-(module lsp.languages.rnix
+(module lsp.languages.nix
   {autoload {lspconfig lspconfig
              utils lsp.utils}})
 
