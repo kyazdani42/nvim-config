@@ -1,8 +1,13 @@
 (module mappings
-  {autoload {nvim aniseed.nvim}})
+  {autoload {nvim aniseed.nvim
+             harpoon-ui harpoon.ui
+             harpoon-mark harpoon.mark
+             telescope telescope.builtin
+             nvim-tree nvim-tree
+             refactoring refactoring}})
 
 (defn- map [mode lhs rhs opt]
-  (nvim.set_keymap mode lhs rhs (or opt {})))
+  (vim.keymap.set mode lhs rhs (or opt {:noremap true :silent true})))
 
 (def- nmap (partial map "n"))
 (def- vmap (partial map "v"))
@@ -11,33 +16,33 @@
 
 (def- nowait {:nowait true})
 (def- silent {:silent true})
-(def- noremap-silent {:noremap true :silent true})
 
 (_map "<C-j>" "" nowait)
 (imap "<C-j>" "<ESC>" nowait)
 (vmap "<C-j>" "<ESC>" nowait)
 
-(nmap "<C-j>" "<C-w>j")
-(nmap "<C-k>" "<C-w>k")
-(nmap "<C-l>" "<C-w>l")
-(nmap "<C-h>" "<C-w>h")
+(nmap "<C-j>" "<C-w>j" {})
+(nmap "<C-k>" "<C-w>k" {})
+(nmap "<C-l>" "<C-w>l" {})
+(nmap "<C-h>" "<C-w>h" {})
+
+(nmap "j" "gj" {})
+(nmap "k" "gk" {})
+
+(nmap "<leader><leader>" "<c-^>" {})
+(nmap "<leader>tn" ":tabnext<CR>" {})
+
+(nmap "Q" "" {})
+(nmap "<F1>" "" {})
+(imap "<F1>" "" {})
 
 (nmap "<leader>v" ":noh<CR>" silent)
 
-(nmap "j" "gj")
-(nmap "k" "gk")
-(nmap "<leader><leader>" "<c-^>")
-(nmap "<leader>tn" ":tabnext<CR>")
+(nmap "<C-u>" "<C-u>zz")
+(nmap "<C-d>" "<C-d>zz")
+(nmap "<C-f>" "<C-f>zz")
 
-(nmap "Q" "")
-(nmap "<F1>" "")
-(imap "<F1>" "")
-
-(nmap "<C-u>" "<C-u>zz" noremap-silent)
-(nmap "<C-d>" "<C-d>zz" noremap-silent)
-(nmap "<C-f>" "<C-f>zz" noremap-silent)
-
-(nmap "<tab>" ":normal za<cr>" noremap-silent)
+(nmap "<tab>" ":normal za<cr>")
 
 (nmap "<leader>tt" "<cmd>Trouble<cr>" silent)
 (nmap "<leader>td" "<cmd>Trouble lsp_definitions<cr>" silent)
@@ -46,41 +51,36 @@
 (nmap "<leader>gg" "<cmd>Neogit<cr>" silent)
 (nmap "<leader>gb" "<cmd>Git blame<cr>" silent)
 
-(nmap "<leader>bd" "<cmd>lua K['delete-hidden-bufs']()<cr>" silent)
-(nmap "<leader>bp" "<cmd>bprev<cr>" silent)
-(nmap "<leader>bn" "<cmd>bnext<cr>" silent)
-(nmap "<leader>bb" "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>" noremap-silent)
-(nmap "<leader>bt" "<cmd>Telescope harpoon marks<CR>" noremap-silent)
-(nmap "<leader>bm" "<cmd>lua require('harpoon.mark').add_file()<CR>" noremap-silent)
+(nmap "<leader>bd" (lambda [] (K.delete-hidden-bufs)) silent)
+(nmap "<leader>bp" "<cmd>bprev<cr>")
+(nmap "<leader>bn" "<cmd>bnext<cr>")
+(nmap "<leader>bb" harpoon-ui.toggle_quick_menu) 
+(nmap "<leader>bt" "<cmd>Telescope harpoon marks<CR>")
+(nmap "<leader>bm" harpoon-mark.add_file)
 
-(nmap "<C-n>" ":NvimTreeToggle<CR>" noremap-silent)
+(nmap "<C-n>" nvim-tree.toggle)
 
-(nmap "<C-p>" "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>" noremap-silent)
-(nmap "<C-b>" "<cmd>lua require('telescope.builtin').buffers()<CR>" noremap-silent)
-(nmap "<C-t>" "<cmd>TLiveGrep<CR>" noremap-silent)
+(nmap "<C-p>" (lambda [] (telescope.find_files {:hidden true})))
+(nmap "<C-b>" telescope.buffers)
+(nmap "<C-t>" "<cmd>TLiveGrep<CR>")
 
-(nmap "<leader>f" "<cmd>Format<CR>" noremap-silent)
+(nmap "<leader>f" (lambda [] (vim.lsp.buf.format {:timeout_ms 2000 :async false})))
 
-(nmap "R" ":write | edit | TSBufEnable highlight<CR>")
-
-(nvim.ex.cabbrev "W" "w")
-(nvim.ex.cabbrev "Xa" "xa")
-(nvim.ex.cabbrev "X" "x")
-
-(nvim.ex.command! "-nargs=0" "Format" ":lua vim.lsp.buf.format { timeout_ms = 2000, async = false }")
-(nvim.ex.command! "Dnd" ":!dragon %")
+(nmap "R" "<cmd>write | edit | TSBufEnable highlight<CR>")
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
 (vmap "++" "<Plug>kommentary_visual_default" silent)
 
-(def- refactor "<cmd>lua require('refactoring').refactor('%s')<CR>")
-(defn refactor-cmd [cmd]
-  (string.format refactor cmd))
+(defn- refactor [s] (lambda [] (refactoring.refactor s)))
+(vmap "<leader>ref"  (refactor "Extract Function"))
+(vmap "<leader>reff" (refactor "Extract Function To File"))
+(vmap "<leader>rev"  (refactor "Extract Variable"))
+(vmap "<leader>riv"  (refactor "Inline Variable"))
+(nmap "<leader>riv"  (refactor "Inline Variable"))
+(nmap "<leader>reb"  (refactor "Extract Block"))
+(nmap "<leader>rebf" (refactor "Extract Block To File"))
 
-(vmap "<leader>ref"  (refactor-cmd "Extract Function")         noremap-silent)
-(vmap "<leader>reff" (refactor-cmd "Extract Function To File") noremap-silent)
-(vmap "<leader>rev"  (refactor-cmd "Extract Variable")         noremap-silent)
-(vmap "<leader>riv"  (refactor-cmd "Inline Variable")          noremap-silent)
-(nmap "<leader>riv"  (refactor-cmd "Inline Variable")          noremap-silent)
-(nmap "<leader>reb"  (refactor-cmd "Extract Block")            noremap-silent)
-(nmap "<leader>rebf" (refactor-cmd "Extract Block To File")    noremap-silent)
+(nvim.ex.cabbrev "W" "w")
+(nvim.ex.cabbrev "Xa" "xa")
+(nvim.ex.cabbrev "X" "x")
+(nvim.ex.command! "Dnd" ":!dragon %")

@@ -1,25 +1,30 @@
 (module lsp.utils
-  {autoload {nvim aniseed.nvim}})
+  {autoload {nvim aniseed.nvim
+             help lspsaga.signaturehelp
+             actions lspsaga.codeaction
+             provider lspsaga.provider
+             rename lspsaga.rename
+             hover lspsaga.hover
+             diags lsp.diagnostics
+             telescope telescope.builtin}})
 
-(def- noremap-silent {:noremap true :silent true})
-
-(defn- buf-map [bufnr mode left right]
-  (nvim.buf_set_keymap bufnr mode left right noremap-silent))
+(defn- map [bufnr mode left right]
+  (vim.keymap.set mode left right {:buffer bufnr :noremap true :silent true}))
 
 (defn on_attach [_ bufnr]
-  (let [nmap (partial buf-map bufnr "n")
-        vmap (partial buf-map bufnr "v")]
+  (let [nmap (partial map bufnr "n")
+        vmap (partial map bufnr "v")]
 
-    (nmap "<leader>ls" "<cmd>lua require'lspsaga.signaturehelp'.signature_help()<CR>")
-    (nmap "<leader>ca" "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>")
-    (vmap "<leader>ca" "<cmd>lua require'lspsaga.codeaction'.range_code_action()<CR>")
-    (nmap "<leader>gd" "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
-    (nmap "<leader>rn" "<cmd>lua require'lspsaga.rename'.rename()<CR>")
-    (nmap "K"          "<cmd>lua require'lspsaga.hover'.render_hover_doc()<CR>")
-    (nmap "gD"         "<cmd>lua vim.lsp.buf.declaration()<CR>")
-    (nmap "gd"         "<cmd>lua vim.lsp.buf.definition()<CR>")
-    (nmap "gy"         "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-    (nmap "gi"         "<cmd>lua vim.lsp.buf.implementation()<CR>")
-    (nmap "<leader>s"  "<cmd>lua require'lsp.diagnostics'['prev-diagnostic']()<CR>")
-    (nmap "<leader>d"  "<cmd>lua require'lsp.diagnostics'['next-diagnostic']()<CR>")
-    (nmap "gr"         "<cmd>lua require('telescope.builtin').lsp_references()<cr>")))
+    (nmap "<leader>ls" help.signature_help)
+    (nmap "<leader>ca" actions.code_action)
+    (vmap "<leader>ca" actions.range_code_action)
+    (nmap "<leader>gd" provider.preview_definition)
+    (nmap "<leader>rn" rename.rename)
+    (nmap "K"          hover.render_hover_doc)
+    (nmap "gD"         vim.lsp.buf.declaration)
+    (nmap "gd"         vim.lsp.buf.definition)
+    (nmap "gy"         vim.lsp.buf.type_definition)
+    (nmap "gi"         vim.lsp.buf.implementation)
+    (nmap "<leader>s"  diags.prev-diagnostic)
+    (nmap "<leader>d"  diags.next-diagnostic)
+    (nmap "gr"         telescope.lsp_references)))
