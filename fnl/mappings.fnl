@@ -64,8 +64,6 @@
 (nmap "<C-b>" telescope.buffers)
 (nmap "<C-t>" "<cmd>TLiveGrep<CR>")
 
-(nmap "<leader>f" (lambda [] (vim.lsp.buf.format {:timeout_ms 2000 :async false})))
-
 (nmap "R" "<cmd>write | edit | TSBufEnable highlight<CR>")
 
 (nmap "++" "<Plug>kommentary_line_default" silent)

@@ -27,4 +27,4 @@
 (let [capabilities (cmp-nvim-lsp.update_capabilities (vim.lsp.protocol.make_client_capabilities))]
   (a.run! 
     (lambda [lang] ((get-setup-fn lang) capabilities))
-    [:lua :ecma :rust :go :graphql :haskell :nix :yaml :terraform :json]))
+    [:lua :ecma :rust :go :graphql :haskell :nix :yaml :terraform :json :efm]))

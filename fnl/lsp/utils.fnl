@@ -11,6 +11,8 @@
 (defn- map [bufnr mode left right]
   (vim.keymap.set mode left right {:buffer bufnr :noremap true :silent true}))
 
+(defn- format [] (vim.lsp.buf.format {:timeout_ms 2000 :async false}))
+
 (defn on_attach [_ bufnr]
   (let [nmap (partial map bufnr "n")
         vmap (partial map bufnr "v")]
@@ -27,4 +29,5 @@
     (nmap "gi"         vim.lsp.buf.implementation)
     (nmap "<leader>s"  diags.prev-diagnostic)
     (nmap "<leader>d"  diags.next-diagnostic)
-    (nmap "gr"         telescope.lsp_references)))
+    (nmap "gr"         telescope.lsp_references)
+    (nmap "<leader>f"  format)))
