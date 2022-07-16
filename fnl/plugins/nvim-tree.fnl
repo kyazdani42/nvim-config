@@ -51,8 +51,7 @@
           :side "right"
           :hide_root_folder false
           :mappings {:custom_only false
-                     :list [{:mode "n"
-                             :key "<C-t>" 
+                     :list [{:key "<C-t>" 
                              :cb "<cmd>TLiveGrep<cr>"}]}}
    :log {:enable false :types {:git true :watcher true}}
    :renderer renderer-config

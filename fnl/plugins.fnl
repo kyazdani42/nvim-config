@@ -87,6 +87,12 @@
     (use :hrsh7th/cmp-nvim-lsp)
     (use :hrsh7th/cmp-nvim-lsp-document-symbol)
 
+    (use :nvim-neotest/neotest
+         {:requires 
+            [:antoinemadec/FixCursorHold.nvim
+             :nvim-neotest/neotest-plenary]
+          :config (fn [] (require :plugins.neotest))})
+
     (use :tpope/vim-surround)
     (use :editorconfig/editorconfig)
     (use :ThePrimeagen/harpoon

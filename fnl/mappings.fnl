@@ -2,6 +2,7 @@
   {autoload {nvim aniseed.nvim
              harpoon-ui harpoon.ui
              harpoon-mark harpoon.mark
+             neotest neotest
              telescope telescope.builtin
              nvim-tree nvim-tree
              refactoring refactoring}})
@@ -44,9 +45,14 @@
 
 (nmap "<tab>" ":normal za<cr>")
 
-(nmap "<leader>tt" "<cmd>Trouble<cr>" silent)
-(nmap "<leader>td" "<cmd>Trouble lsp_definitions<cr>" silent)
-(nmap "<leader>tr" "<cmd>Trouble lsp_references<cr>" silent)
+(nmap "<leader>dt" "<cmd>Trouble<cr>" silent)
+(nmap "<leader>dd" "<cmd>Trouble lsp_definitions<cr>" silent)
+(nmap "<leader>dr" "<cmd>Trouble lsp_references<cr>" silent)
+
+(nmap "<leader>tr" (lambda [] (neotest.run.run)))
+(nmap "<leader>tf" (lambda [] (neotest.run.run (vim.fn.expand "%"))))
+(nmap "<leader>tt" (lambda [] (neotest.summary.toggle)))
+(nmap "<leader>to" (lambda [] (neotest.output.open)))
 
 (nmap "<leader>gg" "<cmd>Neogit<cr>" silent)
 (nmap "<leader>gb" "<cmd>Git blame<cr>" silent)
