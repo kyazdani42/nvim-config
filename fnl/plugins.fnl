@@ -59,10 +59,6 @@
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :plugins.lsp-saga))})
 
-    ; lsp diagnostics management
-    (use :folke/trouble.nvim
-         {:config (fn [] (require :plugins.trouble))})
-
     ; simplify highlighting
     (use :folke/twilight.nvim
          {:config (fn [] (require :plugins.twilight))})
@@ -96,8 +92,6 @@
 
     (use :tpope/vim-surround)
     (use :editorconfig/editorconfig)
-    (use :ThePrimeagen/harpoon
-         {:config (fn [] (require "plugins.harpoon"))})
 
     (use :nvim-treesitter/nvim-treesitter-textobjects)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
@@ -114,6 +108,7 @@
     ; statusline stuff
     (use :SmiteshP/nvim-gps)
 
+    ; notifications
     (use :rcarriga/nvim-notify
          {:config (fn [] (require :plugins.notify))})
 

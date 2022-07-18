@@ -24,7 +24,7 @@
 
 (def- open-file-config {:quit_on_open false
                          :resize_window true
-                         :window_picker {:enable true :exclude {:filetype ["packer" "qf" "Trouble"]}}})
+                         :window_picker {:enable true :exclude {:filetype ["packer" "qf"]}}})
 
 (tree.setup
   {:disable_netrw true

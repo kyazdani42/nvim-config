@@ -1,7 +1,5 @@
 (module mappings
   {autoload {nvim aniseed.nvim
-             harpoon-ui harpoon.ui
-             harpoon-mark harpoon.mark
              neotest neotest
              telescope telescope.builtin
              nvim-tree nvim-tree
@@ -45,10 +43,6 @@
 
 (nmap "<tab>" ":normal za<cr>")
 
-(nmap "<leader>dt" "<cmd>Trouble<cr>" silent)
-(nmap "<leader>dd" "<cmd>Trouble lsp_definitions<cr>" silent)
-(nmap "<leader>dr" "<cmd>Trouble lsp_references<cr>" silent)
-
 (nmap "<leader>tr" (lambda [] (neotest.run.run)))
 (nmap "<leader>tf" (lambda [] (neotest.run.run (vim.fn.expand "%"))))
 (nmap "<leader>tt" (lambda [] (neotest.summary.toggle)))
@@ -60,9 +54,6 @@
 (nmap "<leader>bd" (lambda [] (K.delete-hidden-bufs)) silent)
 (nmap "<leader>bp" "<cmd>bprev<cr>")
 (nmap "<leader>bn" "<cmd>bnext<cr>")
-(nmap "<leader>bb" harpoon-ui.toggle_quick_menu) 
-(nmap "<leader>bt" "<cmd>Telescope harpoon marks<CR>")
-(nmap "<leader>bm" harpoon-mark.add_file)
 
 (nmap "<C-n>" nvim-tree.toggle)
 
