@@ -30,6 +30,7 @@
     (use :nvim-lua/plenary.nvim)
     (use :nvim-telescope/telescope.nvim
          {:config (fn [] (require :plugins.telescope))})
+    (use :nvim-telescope/telescope-ui-select.nvim)
 
     ; templating tag sync
     (use :windwp/nvim-ts-autotag

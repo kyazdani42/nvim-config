@@ -2,6 +2,7 @@
   {autoload {nvim aniseed.nvim
              telescope telescope
              actions telescope.actions
+             themes  telescope.themes
              sorters telescope.sorters
              builtin telescope.builtin}})
 
@@ -17,6 +18,7 @@
               :mappings {:i {"<esc>" actions.close
                              "<C-j>" actions.move_selection_next
                              "<C-k>" actions.move_selection_previous}}}
+   :extensions {:ui-select [(themes.get_dropdown)]}
    :pickers {:buffers ivy
              :find_files ivy
              :live_grep ivy
@@ -34,6 +36,8 @@
   (nvim.ex.highlight "TelescopeMatching       guifg=#ffcb6b"))
 
 (apply-colorscheme)
+
+(telescope.load_extension :ui-select)
 
 (defn- live-grep [dir]
   (let [finder (. builtin :live_grep)]
