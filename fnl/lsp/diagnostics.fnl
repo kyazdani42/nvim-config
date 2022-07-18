@@ -4,9 +4,9 @@
              utils utils
              saga lspsaga.diagnostic}})
 
-(vim.cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
-(vim.cmd "sign define DiagnosticSignWarn text=⚠ texthl=DiagnosticSignWarn linehl= numhl=")
-(vim.cmd "sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=")
+(vim.cmd "sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=")
+(vim.cmd "sign define DiagnosticSignWarn text=𥉉 texthl=DiagnosticSignWarn linehl= numhl=")
+(vim.cmd "sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=")
 (vim.cmd "sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=")
 
 (set vim.lsp.handlers.textDocument/publishDiagnostics

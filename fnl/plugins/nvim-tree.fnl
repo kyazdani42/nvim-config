@@ -32,7 +32,9 @@
    :hijack_netrw  true
    :open_on_setup true
    :open_on_tab   true
-   :diagnostics {:enable true :show_on_dirs false}
+   :diagnostics {:enable true
+                 :show_on_dirs false
+                 :icons {:warning "𥉉" :error "" :info "" :hint ""}}
    :hijack_cursor true
    :update_cwd    true
    :hijack_unnamed_buffer_when_opening true
