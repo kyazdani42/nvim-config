@@ -113,6 +113,9 @@
     ; statusline stuff
     (use :SmiteshP/nvim-gps)
 
+    (use :rcarriga/nvim-notify
+         {:config (fn [] (require :plugins.notify))})
+
     ; rust dependency management plugin
     (use :Saecki/crates.nvim)))
 
