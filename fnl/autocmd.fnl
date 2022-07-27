@@ -15,17 +15,11 @@
 (autocmd [:BufNewFile :BufRead] {:pattern [".eslintrc" ".prettierrc" ".swcrc"]
                                  :command "set ft=json"})
 
-(autocmd :FileType {:pattern :scheme :command "set ft=query"})
-(autocmd :FileType {:pattern [:c :cpp :python :rust] :command "set tabstop=4 shiftwidth=4 noexpandtab"})
-(autocmd :FileType {:pattern "markdown" :command "set tabstop=4 shiftwidth=4 conceallevel=2"})
-(autocmd :FileType {:pattern [:terraform :json :elixir :typescriptreact :typescript :javascript :javascriptreact :lua :html :css :graphql] 
-                    :command "set tabstop=2 shiftwidth=2"})
 ; avoid autocommenting on newline.
 ; needs autocmd because option is local to buffer.
 (autocmd :BufEnter  {:command "setlocal formatoptions-=cro"})
 (autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
 (autocmd :BufWritePost {:pattern "*.tex" :command ":silent !pdflatex % &>/dev/null"})
-
 
 (def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man" "packer" "lspinfo"])
 
