@@ -25,6 +25,7 @@
                             :c complete})}
    :sources [{:name "nvim_lua"}
              {:name "nvim_lsp"}
+             {:name "rg"}
              {:name "path" :keyword_length 4}
              {:name "buffer" :keyword_length 6}]
    :view {:entries "native"}
@@ -34,4 +35,5 @@
                            :menu {:buffer "[Buf]"
                                   :nvim_lsp "[LSP]"
                                   :nvim_lua "[api]"
+                                  :rg "[rg]"
                                   :path "[path]"}})}})

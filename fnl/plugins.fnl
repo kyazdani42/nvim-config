@@ -83,6 +83,7 @@
     (use :hrsh7th/cmp-path)
     (use :hrsh7th/cmp-nvim-lsp)
     (use :hrsh7th/cmp-nvim-lsp-document-symbol)
+    (use :lukas-reineke/cmp-rg)
 
     (use :nvim-neotest/neotest
          {:requires 

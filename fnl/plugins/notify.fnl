@@ -3,5 +3,5 @@
 
 (notify.setup
   {:fps 60
-   :level 1
+   :level 2
    :timeout 1})

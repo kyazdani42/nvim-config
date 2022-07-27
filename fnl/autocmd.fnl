@@ -29,11 +29,11 @@
 
 (def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man" "packer" "lspinfo"])
 
-(autocmd :FileType {:callback (lambda []
-                                (let [ft vim.o.filetype]
-                                  (if (vim.tbl_contains disabled-filetypes ft) 
-                                    (set vim.wo.winbar " ")
-                                    (set vim.wo.winbar "%m %f"))))})
+(autocmd :Filetype {:callback (lambda []
+                                 (let [ft vim.bo.filetype]
+                                   (if (vim.tbl_contains disabled-filetypes ft) 
+                                     (set vim.wo.winbar " ")
+                                     (set vim.wo.winbar "%m %f"))))})
 
 (autocmd :BufWritePost
          {:pattern "*.fnl"

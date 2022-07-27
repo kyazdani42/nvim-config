@@ -26,9 +26,12 @@
                          :resize_window true
                          :window_picker {:enable true :exclude {:filetype ["packer" "qf"]}}})
 
+(defn- on-tree-attach [bufnr]
+  (vim.keymap.set "n" "<C-t>" "<cmd>TLiveGrep<cr>" {:silent true :remap false :buffer bufnr}))
+
 (tree.setup
   {:disable_netrw true
-   :filesystem_watchers {:enable true :interval 100}
+   :filesystem_watchers {:enable true :debounce_delay 100}
    :hijack_netrw  true
    :open_on_setup true
    :open_on_tab   true
@@ -43,6 +46,9 @@
                          :update_cwd true
                          :ignore_list ["fzf" "help" "git"]}
    :ignore_ft_on_setup ["git" "man" "help"]
+   :remove_keymaps ["<C-t>"]
+   :on_attach on-tree-attach
+   :ignore_buf_on_tab_change [:git :man :help :Neogit "--graph" :Mailbox]
    :system_open {:cmd nil
                  :args {}}
    :filters {:dotfiles false
@@ -52,9 +58,7 @@
           :adaptive_size true
           :side "right"
           :hide_root_folder false
-          :mappings {:custom_only false
-                     :list [{:key "<C-t>" 
-                             :cb "<cmd>TLiveGrep<cr>"}]}}
+          :preserve_window_proportions true}
    :log {:enable false :types {:git true :watcher true}}
    :renderer renderer-config
    :git {:enable true
