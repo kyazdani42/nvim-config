@@ -1,1 +1,1 @@
-Neovim configurations, moved to [sourcehut](git.sr.ht/~yazdan/nvim-config)
+Neovim configurations, moved to [sourcehut](https://git.sr.ht/~yazdan/nvim-config)
