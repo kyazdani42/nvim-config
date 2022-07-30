@@ -1,0 +1,40 @@
+(module yazdan.plugins.gitsigns
+  {autoload {a aniseed.core
+             nvim aniseed.nvim
+             gitsigns gitsigns}})
+
+(defn- nmap [bufnr lhs cb]
+  (vim.keymap.set :n lhs cb {:buffer bufnr :remap false :silent true}))
+
+(defn- attach-mappings [bufnr]
+  (nmap bufnr "<leader>hs" gitsigns.preview_hunk)
+  (nmap bufnr "<leader>ha" gitsigns.stage_hunk)
+  (nmap bufnr "<leader>hu" gitsigns.undo_stage_hunk)
+  (nmap bufnr "<leader>hr" gitsigns.reset_hunk)
+  (nmap bufnr "<leader>hn" gitsigns.next_hunk)
+  (nmap bufnr "<leader>hn" gitsigns.prev_hunk))
+
+(defn- on-gitsigns-attach [bufnr]
+  (if (not (a.nil? (string.match (nvim.buf_get_name bufnr) "NvimTree")))
+    false
+    (do
+     (attach-mappings bufnr))))
+
+(gitsigns.setup
+  {:signs {:add          {:hl "GitSignsAdd"          :text "│" :numhl "GitSignsAddNr"    :linehl "GitSignsAddLn"}
+           :change       {:hl "GitSignsChange"       :text "│" :numhl "GitSignsChangeNr" :linehl "GitSignsChangeLn"}
+           :delete       {:hl "GitSignsDelete"       :text "│" :numhl "GitSignsDeleteNr" :linehl "GitSignsDeleteLn"}
+           :topdelete    {:hl "GitSignsTopDelete"    :text "│" :numhl "GitSignsDeleteNr" :linehl "GitSignsDeleteLn"}
+           :changedelete {:hl "GitSignsChangeDelete" :text "│" :numhl "GitSignsChangeNr" :linehl "GitSignsChangeLn"}}
+   :numhl false
+   :linehl false
+   :word_diff false
+   :watch_gitdir {:interval 1000}
+   :current_line_blame false
+   :current_line_blame_opts {:delay 500
+                             :position "eol"}
+   :sign_priority 6
+   :update_debounce 200
+   :status_formatter nil ; Use default
+   :diff_opts {:internal true}
+   :on_attach on-gitsigns-attach})
