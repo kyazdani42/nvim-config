@@ -9,16 +9,14 @@
 (defn- autocmd [name opts]
   (nvim.create_autocmd name (a.merge! {:group group} opts)))
 
-(autocmd :BufWinEnter  {:command (string.format "exec \"%s\"" "normal! g'\\\"")})
+(autocmd :BufWinEnter  {:callback (lambda [] (vim.cmd "silent! normal! g'\""))})
 (autocmd :TextYankPost {:callback (lambda [] (vim.highlight.on_yank {:timeout 500}))})
+(autocmd :BufEnter {:callback (lambda [] (vim.opt_local.formatoptions:remove ["c" "r" "o"]))})
+(autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
 
 (autocmd [:BufNewFile :BufRead] {:pattern [".eslintrc" ".prettierrc" ".swcrc"]
-                                 :command "set ft=json"})
+                                 :callback (lambda [] (set vim.opt_local.filetype :json))})
 
-; avoid autocommenting on newline.
-; needs autocmd because option is local to buffer.
-(autocmd :BufEnter  {:command "setlocal formatoptions-=cro"})
-(autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
 (autocmd :BufWritePost {:pattern "*.tex" :command ":silent !pdflatex % &>/dev/null"})
 
 (def- disabled-filetypes ["NvimTree" "TelescopePrompt" "NeogitStatus" "fugitiveblame" "git" "man" "packer" "lspinfo"])
