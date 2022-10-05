@@ -60,6 +60,9 @@
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :yazdan.plugins.lsp-saga))})
 
+    (use  "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+         {:config (fn [] ((. (require :lsp_lines) :setup)))})
+
     ; simplify highlighting
     (use :folke/twilight.nvim
          {:config (fn [] (require :yazdan.plugins.twilight))})
