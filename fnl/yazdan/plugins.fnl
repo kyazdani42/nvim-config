@@ -26,7 +26,6 @@
          {:config (fn [] (require :yazdan.plugins.treesitter))})
 
     (use "~/dev/nvim/plugins/playground")
-    (use "~/dev/nvim/plugins/mailbox.nvim")
 
     (use :nvim-lua/plenary.nvim)
     (use :nvim-telescope/telescope.nvim
