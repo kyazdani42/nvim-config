@@ -25,8 +25,6 @@
     (use "~/dev/nvim/plugins/nvim-treesitter"
          {:config (fn [] (require :yazdan.plugins.treesitter))})
 
-    (use "~/dev/nvim/plugins/playground")
-
     (use :nvim-lua/plenary.nvim)
     (use :nvim-telescope/telescope.nvim
          {:config (fn [] (require :yazdan.plugins.telescope))})
@@ -97,6 +95,7 @@
     (use :tpope/vim-surround)
     (use :editorconfig/editorconfig)
 
+    (use :nvim-treesitter/playground)
     (use :nvim-treesitter/nvim-treesitter-textobjects)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
 
