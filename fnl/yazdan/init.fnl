@@ -1,6 +1,5 @@
 (module yazdan.init
-  {require {_ yazdan.options
-            k yazdan.k
+  {require {k yazdan.k
             _ yazdan.dump
             _ yazdan.plugins
             _ yazdan.autocmd

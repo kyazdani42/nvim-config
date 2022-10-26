@@ -12,3 +12,5 @@ vim.g["aniseed#env"] = {
   module = "yazdan.init",
   compile = true
 }
+
+pcall(require, "yazdan.options")
