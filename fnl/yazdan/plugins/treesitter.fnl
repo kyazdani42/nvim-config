@@ -12,7 +12,8 @@
                                      :scope_incremental "<leader>m"
                                      :node_decremental "m"}}
    :indent {:enable true}
-   :ensure_installed "all"
+   :ensure_installed {}
+   :auto_install true
    :textobjects {:select {:enable true
                           :keymaps {"<leader>V" "@function.outer" ; replace with block.inner and block.outer when its supported in more languages
                                     "<leader>v" "@function.inner"}}
