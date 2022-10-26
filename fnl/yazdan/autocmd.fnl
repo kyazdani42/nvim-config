@@ -12,7 +12,9 @@
 (autocmd :BufWinEnter  {:callback (lambda [] (vim.cmd "silent! normal! g'\""))})
 (autocmd :TextYankPost {:callback (lambda [] (vim.highlight.on_yank {:timeout 500}))})
 (autocmd :BufEnter {:callback (lambda [] (vim.opt_local.formatoptions:remove ["c" "r" "o"]))})
-(autocmd :CursorHold  {:callback (lambda [] (cs.update_commentstring))})
+
+(when (pcall require :ts_context_commenstring_internal)
+  (autocmd :CursorHold {:callback cs.update_commentstring}))
 
 (autocmd [:BufNewFile :BufRead] {:pattern [".eslintrc" ".prettierrc" ".swcrc"]
                                  :callback (lambda [] (set vim.opt_local.filetype :json))})

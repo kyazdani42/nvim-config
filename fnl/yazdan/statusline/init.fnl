@@ -57,7 +57,7 @@
 (def- empty {:length 0 :value ""})
 
 (defn- get-gps []
-  (if (gps.is_available)
+  (if (and (pcall require :gps) (gps.is_available))
     (let [loc (gps.get_location)
           formatted (.. " ➛ " loc " ")]
       (if (> (# loc) 0)

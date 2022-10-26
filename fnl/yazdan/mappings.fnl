@@ -55,10 +55,10 @@
 (nmap "<leader>bp" "<cmd>bprev<cr>")
 (nmap "<leader>bn" "<cmd>bnext<cr>")
 
-(nmap "<C-n>" nvim-tree.toggle)
+(nmap "<C-n>" (lambda [] (nvim-tree.toggle)))
 
 (nmap "<C-p>" (lambda [] (telescope.find_files {:hidden true})))
-(nmap "<C-b>" telescope.buffers)
+(nmap "<C-b>" (lambda [] (telescope.buffers)))
 (nmap "<C-t>" "<cmd>TLiveGrep<CR>")
 
 (nmap "R" "<cmd>write | edit | TSBufEnable highlight<CR>")

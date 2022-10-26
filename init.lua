@@ -1,21 +1,14 @@
-local packer_dir = "~/.local/share/nvim/site/pack/packer"
-
-local ensure_installed = function(user, repo)
-	local ok, results = pcall(vim.fs.find, repo, { path = packer_dir, type = "directory" })
-	if not ok or #results == 0 then
-		local cmd = string.format("!git clone https://github.com/%s/%s %s/start/%s", user, repo, packer_dir, repo)
-		vim.cmd(cmd)
-		vim.cmd("packadd " .. repo)
-	end
+local function ensure_installed(repo)
+  local ok, results = pcall(vim.fs.find, repo, { path = "~/.local/share/nvim/site/pack/packer", type = "directory" })
+  return ok and #results > 0
 end
 
-ensure_installed("lewis6991", "packer.nvim")
-ensure_installed("Olical", "aniseed")
+if not ensure_installed("packer") or not ensure_installed("aniseed") then
+  print("Configuration loading was cancelled. Please install packer.nvim and aniseed.")
+  return
+end
 
 vim.g["aniseed#env"] = {
   module = "yazdan.init",
   compile = true
 }
-
--- force initialize init before plugins
-require "yazdan"
