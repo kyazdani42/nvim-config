@@ -10,7 +10,7 @@
 (def- violet "#b9a3eb")
 (def- green "#d0e7d0")
 
-(def colors 
+(def colors
   {:STNormalFlatMD   {:guifg dark-grey :guibg black}
    :STNormalFlatInfo {:guifg dark-grey :guibg black}
 
@@ -27,7 +27,7 @@
    :STTermInfo    {:guifg blue   :guibg grey}
    :STGitBranch   {:guifg black  :guibg  blue :gui "bold"}})
 
-(def modes 
+(def modes
   {:n   {:color "%#STNormalMD#" :val " NORMAL "}
    :no  {:color "%#STNormalMD#" :val " N-Operator Pending "}
 
@@ -55,7 +55,7 @@
    :r?  {:color "%#STNormalFlatMD#" :val " CONFIRM "}
    :!   {:color "%#STNormalFlatMD#" :val " SHELL "}})
 
-(def groups 
+(def groups
   {:normal       "%#Normal#"
    :normal-float "%#NormalFloat#"
    :git          "%#STGitBranch#"

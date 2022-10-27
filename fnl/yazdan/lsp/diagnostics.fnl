@@ -10,7 +10,7 @@
 (vim.cmd "sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=")
 
 (set vim.lsp.handlers.textDocument/publishDiagnostics
-     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics 
+     (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
                    {:underline false
                     :signs false
                     :virtual_text false}))

@@ -14,6 +14,6 @@
     (if (= 0 (length fname))
       {:value (colorize "[NO NAME]") :length 9 :original ""}
       (let [modified (string.format "%s %s " (or (devicon.get_icon fname) "") (path-relative fname))]
-        {:value (colorize modified) 
+        {:value (colorize modified)
          :length (length modified)
          :original fname}))))

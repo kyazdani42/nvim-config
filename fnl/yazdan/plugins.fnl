@@ -42,7 +42,7 @@
          {:config (fn [] (require :yazdan.plugins.kommentary))})
 
     (use :norcalli/nvim-colorizer.lua
-         {:config (fn [] (require :yazdan.plugins.colorizer))}) 
+         {:config (fn [] (require :yazdan.plugins.colorizer))})
 
     ; refactoring patterns
     (use :ThePrimeagen/refactoring.nvim
@@ -87,7 +87,7 @@
     (use :lukas-reineke/cmp-rg)
 
     (use :nvim-neotest/neotest
-         {:requires 
+         {:requires
             [:antoinemadec/FixCursorHold.nvim
              :nvim-neotest/neotest-plenary]
           :config (fn [] (require :yazdan.plugins.neotest))})

@@ -17,10 +17,10 @@
    :mapping {"<C-u>" (cmp.mapping.scroll_docs -4)
              "<C-d>" (cmp.mapping.scroll_docs 4)
              "<C-c>" (cmp.mapping.close)
-             "<CR>" (cmp.mapping.confirm 
+             "<CR>" (cmp.mapping.confirm
                       {:select false
                        :behavior cmp.ConfirmBehavior.Insert})
-             "<c-space>" (cmp.mapping 
+             "<c-space>" (cmp.mapping
                            {:i (cmp.mapping.complete)
                             :c complete})}
    :sources [{:name "nvim_lua"}
@@ -30,7 +30,7 @@
              {:name "buffer" :keyword_length 6}]
    :view {:entries "native"}
 
-   :formatting {:format (lspkind.cmp_format 
+   :formatting {:format (lspkind.cmp_format
                           {:with_text true
                            :menu {:buffer "[Buf]"
                                   :nvim_lsp "[LSP]"

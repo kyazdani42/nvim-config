@@ -15,12 +15,12 @@
 
 (def- lua-cmd {:formatCommand "stylua -"
                :formatStdin true})
-               
-(def- filetypes 
+
+(def- filetypes
   [:javascript
    :javascriptreact
    :javascript.jsx
-   :typescript 
+   :typescript
    :typescriptreact
    :typescript.tsx
    :graphql

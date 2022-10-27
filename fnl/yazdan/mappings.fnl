@@ -79,3 +79,5 @@
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
 (nvim.ex.command! "Dnd" ":!dragon %")
+
+(vim.cmd "command! TrimEnd :%s/ *$//g | noh")

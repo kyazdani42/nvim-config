@@ -25,6 +25,6 @@
   (. (require (.. "yazdan.lsp.languages." lang)) :setup))
 
 (let [capabilities (cmp-nvim-lsp.default_capabilities (vim.lsp.protocol.make_client_capabilities))]
-  (a.run! 
+  (a.run!
     (lambda [lang] ((get-setup-fn lang) capabilities))
     [:lua :js :rust :go :graphql :haskell :nix :yaml :terraform :json :efm]))

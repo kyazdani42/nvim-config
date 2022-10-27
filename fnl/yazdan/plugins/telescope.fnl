@@ -10,7 +10,7 @@
   {:theme "ivy"
    :borderchars {:preview ["─" "│" "─" "│" "┌" "┐" "┘" "└"]}})
 
-(telescope.setup 
+(telescope.setup
   {:defaults {:prompt_prefix " "
               :layout_config {:height 15}
               :file_sorter  sorters.get_fzy_sorter

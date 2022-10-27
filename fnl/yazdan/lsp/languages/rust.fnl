@@ -4,5 +4,5 @@
 
 (defn setup [cap]
   (lspconfig.rust_analyzer.setup
-    {:on_attach utils.on_attach 
+    {:on_attach utils.on_attach
      :capabilities cap}))
