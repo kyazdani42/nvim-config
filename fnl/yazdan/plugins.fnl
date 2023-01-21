@@ -57,9 +57,6 @@
     (use :tami5/lspsaga.nvim
          {:config (fn [] (require :yazdan.plugins.lsp-saga))})
 
-    (use  "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-         {:config (fn [] ((. (require :lsp_lines) :setup)))})
-
     ; simplify highlighting
     (use :folke/twilight.nvim
          {:config (fn [] (require :yazdan.plugins.twilight))})
@@ -88,15 +85,13 @@
 
     (use :nvim-neotest/neotest
          {:requires
-            [:antoinemadec/FixCursorHold.nvim
-             :nvim-neotest/neotest-plenary]
+            [:nvim-neotest/neotest-plenary]
           :config (fn [] (require :yazdan.plugins.neotest))})
 
     (use :tpope/vim-surround)
     (use :editorconfig/editorconfig)
 
     (use :nvim-treesitter/playground)
-    (use :nvim-treesitter/nvim-treesitter-textobjects)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
 
     ; git

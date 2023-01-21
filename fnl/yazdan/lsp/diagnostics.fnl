@@ -13,8 +13,7 @@
      (vim.lsp.with vim.lsp.diagnostic.on_publish_diagnostics
                    {:underline false
                     :signs false
-                    :virtual_text false}))
-                    ; :virtual_text {:spacing 1 :prefix " "}}))
+                    :virtual_text {:spacing 1 :prefix " "}}))
 
 (defn- to-diagnostic [where]
   (let [diagnostics (vim.diagnostic.get (nvim.get_current_buf))]

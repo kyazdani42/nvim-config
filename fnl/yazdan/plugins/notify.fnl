@@ -5,3 +5,5 @@
   {:fps 60
    :level 2
    :timeout 1})
+
+(set vim.notify notify)

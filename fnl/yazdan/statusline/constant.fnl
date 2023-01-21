@@ -25,6 +25,7 @@
    :STInsertInfo  {:guifg violet :guibg grey}
    :STReplaceInfo {:guifg green  :guibg grey}
    :STTermInfo    {:guifg blue   :guibg grey}
+   :BgAsFg        {:guifg "bg"}
    :STGitBranch   {:guifg black  :guibg  blue :gui "bold"}})
 
 (def modes
@@ -61,4 +62,5 @@
    :git          "%#STGitBranch#"
    :cursorline   "%#CursorLine#"
    :vertsplit    "%#VertSplit#"
-   :fname        "%#STGitBranch#"})
+   :fname        "%#STGitBranch#"
+   :reset-fg     "%#BgAsFg#"})

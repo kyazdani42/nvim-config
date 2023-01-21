@@ -1,7 +1,8 @@
 (module yazdan.plugins.treesitter
   {autoload {nvim aniseed.nvim
              nvim-gps nvim-gps
-             configs nvim-treesitter.configs}})
+             configs nvim-treesitter.configs
+             parsers nvim-treesitter.parsers}})
 
 (configs.setup
   {:highlight {:enable true}

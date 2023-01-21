@@ -43,10 +43,10 @@
         total-size (: vim.opt.columns :get)
         content-length (+ content.mode.length content.filename.length content.gps.length content.git.length content.bufinfo.length)
         padding (string.rep " " (- total-size content-length))]
-    (string.format "%s%s%s%s%s" const.groups.normal-float left-side const.groups.normal-float padding right-side)))
+    (string.format "%s%s%s%s%s%s" const.groups.normal-float left-side const.groups.normal-float padding right-side const.groups.reset-fg)))
 
 (defn- special-format [str]
-  (.. "%#SpecialComment# " str))
+  (.. "%#SpecialComment# " str const.groups.reset-fg))
 
 (defn- get-branch-name [bufnr]
   (. (git.get-branch (. (fname.get bufnr) :original)) :value))

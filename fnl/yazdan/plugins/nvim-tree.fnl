@@ -46,7 +46,6 @@
                          :update_cwd true
                          :ignore_list ["fzf" "help" "git"]}
    :ignore_ft_on_setup ["git" "man" "help"]
-   :remove_keymaps ["<C-t>"]
    :on_attach on-tree-attach
    :ignore_buf_on_tab_change [:git :man :help :Neogit "--graph" :Mailbox]
    :system_open {:cmd nil
@@ -59,7 +58,7 @@
           :side "right"
           :hide_root_folder false
           :preserve_window_proportions true}
-   :log {:enable true :types {:all true}}
+   :log {:enable false :types {:all true}}
    :renderer renderer-config
    :git {:enable true
          :ignore true
