@@ -41,7 +41,7 @@
 
 (defn- live-grep [dir]
   (let [finder (. builtin :live_grep)]
-    (if dir
+    (if (and dir (~= dir ""))
       (finder {:search_dirs [dir]})
       (finder))))
 

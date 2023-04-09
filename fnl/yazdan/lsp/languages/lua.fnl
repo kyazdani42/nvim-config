@@ -5,6 +5,6 @@
 (defn setup [capabilites]
   (neodev.setup {})
   (let [cfg (require :lspconfig)]
-    (cfg.sumneko_lua.setup {:on_attach utils.on_attach
-                            :settings {:Lua {:telemetry {:enable false}
-                                             :capabilities capabilities}}})))
+    (cfg.lua_ls.setup {:on_attach utils.on_attach
+                       :settings {:Lua {:telemetry {:enable false}
+                                        :capabilities capabilities}}})))

@@ -2,7 +2,7 @@
   {autoload {nvim aniseed.nvim
              neotest neotest
              telescope telescope.builtin
-             nvim-tree nvim-tree
+             nvim-tree nvim-tree.api
              refactoring refactoring}})
 
 (defn- map [mode lhs rhs opt]
@@ -55,7 +55,7 @@
 (nmap "<leader>bp" "<cmd>bprev<cr>")
 (nmap "<leader>bn" "<cmd>bnext<cr>")
 
-(nmap "<C-n>" (lambda [] (nvim-tree.toggle)))
+(nmap "<C-n>" nvim-tree.tree.toggle)
 
 (nmap "<C-p>" (lambda [] (telescope.find_files {:hidden true})))
 (nmap "<C-b>" (lambda [] (telescope.buffers)))

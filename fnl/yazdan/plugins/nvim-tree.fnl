@@ -1,6 +1,7 @@
 (module yazdan.plugins.nvim-tree
   {autoload {nvim aniseed.nvim
-             tree nvim-tree}})
+             tree nvim-tree
+             tree-api nvim-tree.api}})
 
 (def- renderer-config {:group_empty true
                        :highlight_git false
@@ -27,13 +28,13 @@
                          :window_picker {:enable true :exclude {:filetype ["packer" "qf"]}}})
 
 (defn- on-tree-attach [bufnr]
+  (tree-api.config.mappings.default_on_attach bufnr)
   (vim.keymap.set "n" "<C-t>" "<cmd>TLiveGrep<cr>" {:silent true :remap false :buffer bufnr}))
 
 (tree.setup
   {:disable_netrw true
    :filesystem_watchers {:enable true :debounce_delay 100}
    :hijack_netrw  true
-   :open_on_setup true
    :open_on_tab   true
    :diagnostics {:enable true
                  :show_on_dirs false
@@ -45,7 +46,6 @@
    :update_focused_file {:enable true
                          :update_cwd true
                          :ignore_list ["fzf" "help" "git"]}
-   :ignore_ft_on_setup ["git" "man" "help"]
    :on_attach on-tree-attach
    :ignore_buf_on_tab_change [:git :man :help :Neogit "--graph" :Mailbox]
    :system_open {:cmd nil
@@ -65,3 +65,17 @@
          :timeout 400}
    :actions {:change_dir {:global true}
              :open_file open-file-config}})
+
+(defn- open-tree [data]
+  (let [dir? (= 1 (vim.fn.isdirectory data.file))
+        file? (= 1 (vim.fn.filereadable data.file))
+        ft (. (. vim.bo data.buf) :ft)
+        no-name-buf? (and (= data.file "") (= "" ft))]
+    (if no-name-buf?
+      (tree-api.tree.toggle)
+      (if dir?
+        (tree-api.tree.toggle {:path data.file})
+        (when (and file? (not (vim.tbl_contains [:git :man :help] ft)))
+          (tree-api.tree.toggle {:path data.file :focus false :find_file true :update_root true}))))))
+
+(vim.api.nvim_create_autocmd [:VimEnter] {:callback open-tree})
