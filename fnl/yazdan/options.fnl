@@ -7,6 +7,7 @@
 (set vim.opt.foldlevelstart 99)
 (set vim.opt.termguicolors true)
 (set vim.opt.mouse :a)
+(set vim.opt.mousemodel :extend)
 (set vim.opt.ignorecase true)
 (set vim.opt.confirm true)
 (set vim.opt.scrolloff 8)
