@@ -89,7 +89,6 @@
           :config (fn [] (require :yazdan.plugins.neotest))})
 
     (use :tpope/vim-surround)
-    (use :editorconfig/editorconfig)
 
     (use :nvim-treesitter/playground)
     (use :JoosepAlviste/nvim-ts-context-commentstring)
