@@ -8,10 +8,10 @@
    :css {:icon ""
          :color "#61afef"
          :name "css"}
-   :js {:icon ""
+   :js {:icon ""
         :color "#EBCB8B"
         :name "Js"}
-   :ts {:icon "ﯤ"
+   :ts {:icon "󰛦"
         :color "#519aba"
         :name "Ts"}
    :png {:icon " "
@@ -23,19 +23,19 @@
    :jpeg {:icon " "
           :color "#BD77DC"
           :name "jpeg"}
-   :mp3 {:icon ""
+   :mp3 {:icon ""
          :color "#C8CCD4"
          :name "mp3"}
-   :mp4 {:icon ""
+   :mp4 {:icon ""
          :color "#C8CCD4"
          :name "mp4"}
-   :lock {:icon ""
+   :lock {:icon ""
           :color "#117cad"
           :name "lock"}
-   :graphql {:icon ""
+   :graphql {:icon "󰡷"
              :color "#e632ad"
              :name "graphql"}
-   :gql {:icon ""
+   :gql {:icon "󰡷"
          :color "#e632ad"
          :name "graphql"}
    :fnl {:icon ""

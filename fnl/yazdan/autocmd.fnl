@@ -25,8 +25,7 @@
 
 (autocmd :Filetype {:callback (lambda []
                                  (let [ft vim.bo.filetype]
-                                   (if (vim.tbl_contains disabled-filetypes ft)
-                                     (set vim.wo.winbar " ")
+                                   (when (not (vim.tbl_contains disabled-filetypes ft))
                                      (set vim.wo.winbar "%m %f"))))})
 
 (autocmd :BufWritePost
