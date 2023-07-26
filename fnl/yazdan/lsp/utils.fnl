@@ -20,13 +20,13 @@
     ; saga
     (nmap "<leader>ls" help.signature_help)
     (nmap "<leader>gd" provider.preview_definition)
-    (nmap "<leader>rn" rename.rename) ; TODO: recode
+    (nmap "<leader>rn" rename.rename)
 
     (nmap "<leader>ca" vim.lsp.buf.code_action)
     (nmap "K"          vim.lsp.buf.hover)
     (nmap "gd"         vim.lsp.buf.type_definition)
-    (nmap "<C-]>"         vim.lsp.buf.definition)
-    (nmap "<leader>dp"  diags.prev-diagnostic)
-    (nmap "<leader>dn"  diags.next-diagnostic)
+    (nmap "<C-]>"      vim.lsp.buf.definition)
+    (nmap "<leader>dp" diags.prev-diagnostic)
+    (nmap "<leader>dn" diags.next-diagnostic)
     (nmap "gr"         telescope.lsp_references)
-    (nmap "<leader>ff"  format)))
+    (nmap "<leader>ff" format)))

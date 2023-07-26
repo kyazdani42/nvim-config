@@ -78,4 +78,4 @@
         (when (and file? (not (vim.tbl_contains [:git :gitcommit :man :help] ft)))
           (tree-api.tree.toggle {:path data.file :focus false :find_file true :update_root true}))))))
 
-(vim.api.nvim_create_autocmd [:VimEnter] {:callback open-tree})
+(nvim.create_autocmd [:VimEnter] {:callback open-tree})
