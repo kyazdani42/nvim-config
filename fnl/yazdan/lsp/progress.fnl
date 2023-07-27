@@ -6,7 +6,7 @@
              :is-ending? false})
 
 (defn- get-buf-win [buf]
-  (a.first (a.filter (fn [win] (= (nvim.win_get_buf win) buf)) (nvim.list_wins))))
+  (a.first (a.filter #(= (nvim.win_get_buf $1) buf) (nvim.list_wins))))
 
 (defn- get-winbar []
   (nvim.get_option_value :winbar {:win state.win}))
@@ -25,10 +25,10 @@
 (defn- lsp-load-end []
   (set state.is-ending? true)
   (set-winbar-msg (vim.fn.substitute (get-winbar) const.load-str const.ok-str ""))
-  (vim.defer_fn (fn []
-                  (set-winbar-msg (vim.fn.substitute (get-winbar) const.ok-str "" ""))
-                  (set state.is-ending? false)
-                  (set state.win nil))
+  (vim.defer_fn #(do
+                   (set-winbar-msg (vim.fn.substitute (get-winbar) const.ok-str "" ""))
+                   (set state.is-ending? false)
+                   (set state.win nil))
                 const.display-ok-duration))
 
 (defn- progress-handler [info]

@@ -17,8 +17,8 @@
 (defn- open-popup-window [lines]
   (let [curbuf (nvim.get_current_buf)
         buf (nvim.create_buf false true)
-        win (nvim.open_win 0 false (a.merge popup-default-cfg {:width (vim.fn.max (vim.tbl_map (fn [n] (# n)) lines))
-                                                               :height (# lines)}))]
+        win (nvim.open_win 0 false (a.merge popup-default-cfg {:width (vim.fn.max (vim.tbl_map #(length $1) lines))
+                                                               :height (length lines)}))]
     (do
       (set state.win win)
       (nvim.buf_set_lines buf 0 -1 false lines)
@@ -27,13 +27,12 @@
       (nvim.set_option_value :conceallevel 3 {:win state.win})
       (nvim.set_option_value :wrap true {:win state.win})
       (nvim.win_set_buf state.win buf)
-      (nvim.create_autocmd [:CursorMoved :InsertEnter :WinEnter :BufWinEnter
-                                   {:once true
-                                    :buffer curbuf
-                                    :callback (fn []
-                                                (when (and (not (a.nil? state.win)) (nvim.win_is_valid state.win))
-                                                  (nvim.win_close state.win true)
-                                                  (set state.win nil)))}]))))
+      (nvim.create_autocmd [:CursorMoved :InsertEnter :WinEnter :BufWinEnter]
+                           {:once true
+                            :buffer curbuf
+                            :callback #(when (and (not (a.nil? state.win)) (nvim.win_is_valid state.win))
+                                         (nvim.win_close state.win true)
+                                         (set state.win nil))}))))
 
 (defn handler [_ result ctx config]
   (when (= (nvim.get_current_buf) ctx.bufnr)

@@ -11,55 +11,55 @@
     (use :wbthomason/packer.nvim)
     (use :Olical/aniseed)
     (use :Olical/conjure
-         {:config (fn [] (require :yazdan.plugins.conjure))})
+         {:config #(require :yazdan.plugins.conjure)})
 
     (use "~/dev/nvim/plugins/blue-moon"
-         {:config (fn [] (vim.cmd "colorscheme blue-moon"))})
+         {:config #(vim.cmd "colorscheme blue-moon")})
 
     (use "~/dev/nvim/plugins/nvim-web-devicons"
-         {:config (fn [] (require :yazdan.plugins.web-devicons))})
+         {:config #(require :yazdan.plugins.web-devicons)})
 
     (use "~/dev/nvim/plugins/nvim-tree.lua"
-         {:config (fn [] (require :yazdan.plugins.nvim-tree))})
+         {:config #(require :yazdan.plugins.nvim-tree)})
 
     (use "~/dev/nvim/plugins/nvim-treesitter"
-         {:config (fn [] (require :yazdan.plugins.treesitter))})
+         {:config #(require :yazdan.plugins.treesitter)})
 
     (use :nvim-lua/plenary.nvim)
     (use :nvim-telescope/telescope.nvim
-         {:config (fn [] (require :yazdan.plugins.telescope))})
+         {:config #(require :yazdan.plugins.telescope)})
     (use :nvim-telescope/telescope-ui-select.nvim)
 
     ; templating tag sync
     (use :windwp/nvim-ts-autotag
-         {:config (fn [] (require :yazdan.plugins.autotag))})
+         {:config #(require :yazdan.plugins.autotag)})
 
     (use :lewis6991/gitsigns.nvim
-         {:config (fn [] (require :yazdan.plugins.gitsigns))})
+         {:config #(require :yazdan.plugins.gitsigns)})
 
     ; comment plugin
     (use :b3nj5m1n/kommentary
-         {:config (fn [] (require :yazdan.plugins.kommentary))})
+         {:config #(require :yazdan.plugins.kommentary)})
 
     (use :norcalli/nvim-colorizer.lua
-         {:config (fn [] (require :yazdan.plugins.colorizer))})
+         {:config #(require :yazdan.plugins.colorizer)})
 
     ; refactoring patterns
     (use :ThePrimeagen/refactoring.nvim
-         {:config (fn [] (require :yazdan.plugins.refactoring))})
+         {:config #(require :yazdan.plugins.refactoring)})
 
     (use :neovim/nvim-lspconfig
-         {:config (fn [] (require :yazdan.lsp))})
+         {:config #(require :yazdan.lsp)})
 
     (use :b0o/schemastore.nvim)
 
     ; native lsp improvements
     (use :tami5/lspsaga.nvim
-         {:config (fn [] (require :yazdan.plugins.lsp-saga))})
+         {:config #(require :yazdan.plugins.lsp-saga)})
 
     ; simplify highlighting
     (use :folke/twilight.nvim
-         {:config (fn [] (require :yazdan.plugins.twilight))})
+         {:config #(require :yazdan.plugins.twilight)})
 
     ; lisps auto parens and format
     (use :eraserhd/parinfer-rust
@@ -70,7 +70,7 @@
     (use :hrsh7th/vim-vsnip-integ)
 
     (use :hrsh7th/nvim-cmp
-         {:config (fn [] (require :yazdan.plugins.nvim-cmp))})
+         {:config #(require :yazdan.plugins.nvim-cmp)})
 
     ; icons for completion
     (use :onsails/lspkind-nvim)
@@ -86,7 +86,7 @@
     (use :nvim-neotest/neotest
          {:requires
             [:nvim-neotest/neotest-plenary]
-          :config (fn [] (require :yazdan.plugins.neotest))})
+          :config #(require :yazdan.plugins.neotest)})
 
     (use :tpope/vim-surround)
 
@@ -107,7 +107,7 @@
 
     ; notifications
     (use :rcarriga/nvim-notify
-         {:config (fn [] (require :yazdan.plugins.notify))})
+         {:config #(require :yazdan.plugins.notify)})
 
     ; rust dependency management plugin
     (use :Saecki/crates.nvim)))
