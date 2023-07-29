@@ -1,4 +1,4 @@
-(module yazdan.plugins.neottest
+(module yazdan.plugins.neotest
   {autoload {neotest neotest}})
 
 (neotest.setup

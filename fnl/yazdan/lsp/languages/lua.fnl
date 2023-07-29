@@ -1,10 +1,15 @@
 (module yazdan.lsp.languages.lua
-  {autoload {neodev neodev
+  {autoload {nvim aniseed.nvim
+             neodev neodev
              utils yazdan.lsp.utils}})
 
 (defn setup [capabilites]
-  (neodev.setup {})
+  (neodev.setup)
+
   (let [cfg (require :lspconfig)]
     (cfg.lua_ls.setup {:on_attach utils.on_attach
-                       :settings {:Lua {:telemetry {:enable false}
+                       :settings {:Lua {:version "LuaJIT"
+                                        :telemetry {:enable false}
+                                        :workspace {:library (nvim.get_runtime_file "" true)
+                                                    :checkThirdParty false}
                                         :capabilities capabilities}}})))

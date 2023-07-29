@@ -100,7 +100,7 @@
     ; lua 5.1 reference documentation
     (use :milisims/nvim-luaref)
     ; lua neovim api completion
-    (use :folke/neodev.nvim)
+    (use :folke/neodev.nvim) ; setup with lua lsp
 
     ; statusline stuff
     (use :SmiteshP/nvim-gps)
