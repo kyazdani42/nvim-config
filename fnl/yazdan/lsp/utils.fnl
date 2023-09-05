@@ -1,11 +1,9 @@
 (module yazdan.lsp.utils
   {autoload {nvim aniseed.nvim
              diags yazdan.lsp.diagnostics
-
              help lspsaga.signaturehelp
              provider lspsaga.provider
              rename lspsaga.rename
-
              telescope telescope.builtin}})
 
 (defn- map [bufnr mode left right]

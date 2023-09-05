@@ -5,7 +5,6 @@
              utils yazdan.utils
              hover yazdan.lsp.handlers.hover
              definition yazdan.lsp.handlers.definition
-             rename yazdan.lsp.handlers.rename
              signature yazdan.lsp.handlers.signature}
    require {_ yazdan.lsp.diagnostics
             _ yazdan.lsp.progress}})
@@ -13,7 +12,6 @@
 (set vim.lsp.handlers.textDocument/definition definition.handler)
 (set vim.lsp.handlers.textDocument/hover hover.handler)
 (set vim.lsp.handlers.textDocument/signatureHelp signature.handler)
-(set vim.lsp.handlers.textDocument/rename rename.handler)
 
 (defn- get-setup-fn [lang]
   (. (require (.. "yazdan.lsp.languages." lang)) :setup))
