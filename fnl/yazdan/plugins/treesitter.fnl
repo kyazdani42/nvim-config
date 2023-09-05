@@ -1,6 +1,5 @@
 (module yazdan.plugins.treesitter
   {autoload {nvim aniseed.nvim
-             nvim-gps nvim-gps
              configs nvim-treesitter.configs
              parsers nvim-treesitter.parsers}})
 
@@ -25,5 +24,3 @@
 
    :context_commentstring {:enable true
                            :enable_autocmd false}})
-
-(nvim-gps.setup)

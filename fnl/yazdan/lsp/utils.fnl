@@ -17,11 +17,8 @@
   (let [nmap (partial map bufnr "n")
         vmap (partial map bufnr "v")]
 
-    ; saga
-    (nmap "<leader>ls" help.signature_help)
-    (nmap "<leader>gd" provider.preview_definition)
-    (nmap "<leader>rn" rename.rename)
-
+    (nmap "<leader>ls" vim.lsp.buf.signature_help)
+    (nmap "<leader>rn" vim.lsp.buf.rename)
     (nmap "<leader>ca" vim.lsp.buf.code_action)
     (nmap "K"          vim.lsp.buf.hover)
     (nmap "gd"         vim.lsp.buf.type_definition)

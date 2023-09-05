@@ -1,9 +1,7 @@
 (module yazdan.mappings
   {autoload {nvim aniseed.nvim
-             neotest neotest
              telescope telescope.builtin
-             nvim-tree nvim-tree.api
-             refactoring refactoring}})
+             nvim-tree nvim-tree.api}})
 
 (defn- map [mode lhs rhs opt]
   (vim.keymap.set mode lhs rhs (or opt {:noremap true :silent true})))
@@ -43,12 +41,7 @@
 
 (nmap "<tab>" ":normal za<cr>")
 
-(nmap "<leader>tr" (lambda [] (neotest.run.run)))
-(nmap "<leader>tf" (lambda [] (neotest.run.run (vim.fn.expand "%"))))
-(nmap "<leader>tt" (lambda [] (neotest.summary.toggle)))
-(nmap "<leader>to" (lambda [] (neotest.output.open)))
-
-(nmap "<leader>gg" "<cmd>Neogit<cr>" silent)
+(nmap "<leader>gg" "<cmd>Git<cr>" silent)
 (nmap "<leader>gb" "<cmd>Git blame<cr>" silent)
 
 (nmap "<leader>bd" (lambda [] (K.delete-hidden-bufs)) silent)
@@ -65,15 +58,6 @@
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
 (vmap "++" "<Plug>kommentary_visual_default" silent)
-
-(defn- refactor [s] (lambda [] (refactoring.refactor s)))
-(vmap "<leader>ref"  (refactor "Extract Function"))
-(vmap "<leader>reff" (refactor "Extract Function To File"))
-(vmap "<leader>rev"  (refactor "Extract Variable"))
-(vmap "<leader>riv"  (refactor "Inline Variable"))
-(nmap "<leader>riv"  (refactor "Inline Variable"))
-(nmap "<leader>reb"  (refactor "Extract Block"))
-(nmap "<leader>rebf" (refactor "Extract Block To File"))
 
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
