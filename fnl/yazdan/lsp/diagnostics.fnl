@@ -55,5 +55,5 @@
       (utils.warn "No Diagnostics")
       (func-next))))
 
-(defn prev-diagnostic [] (to-diagnostic vim.diagnostic.goto_next))
-(defn next-diagnostic [] (to-diagnostic vim.diagnostic.goto_prev))
+(defn prev-diagnostic [] (to-diagnostic vim.diagnostic.goto_prev))
+(defn next-diagnostic [] (to-diagnostic vim.diagnostic.goto_next))
