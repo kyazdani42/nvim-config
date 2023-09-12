@@ -1,5 +1,6 @@
 (module yazdan.lsp.handlers.definition
-  {autoload {a aniseed.core}})
+  {autoload {a aniseed.core
+             utils yazdan.utils}})
 
 (defn- get-location-from [result]
   (if (vim.tbl_islist result) (a.first result) result))

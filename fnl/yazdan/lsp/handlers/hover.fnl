@@ -14,7 +14,13 @@
 
 (def- state {})
 
+(defn remove-hover-window [buf]
+  #(when (and (not (a.nil? state.win)) (nvim.win_is_valid state.win) (not= state.win (nvim.get_current_win)))
+     (nvim.win_close state.win true)
+     (set state.win nil)))
+
 (defn- open-popup-window [lines]
+  (do)
   (let [curbuf (nvim.get_current_buf)
         buf (nvim.create_buf false true)
         win (nvim.open_win 0 false (a.merge popup-default-cfg {:width (vim.fn.max (vim.tbl_map #(length $1) lines))
@@ -27,12 +33,16 @@
       (nvim.set_option_value :conceallevel 3 {:win state.win})
       (nvim.set_option_value :wrap true {:win state.win})
       (nvim.win_set_buf state.win buf)
-      (nvim.create_autocmd [:CursorMoved :InsertEnter :WinEnter :BufWinEnter]
+      (nvim.create_augroup :HoverHandler {:clear true})
+      (nvim.create_autocmd [:BufEnter]
                            {:once true
+                            :group :HoverHandler
+                            :callback (remove-hover-window curbuf)})
+      (nvim.create_autocmd [:CursorMoved :InsertEnter]
+                           {:once true
+                            :group :HoverHandler
                             :buffer curbuf
-                            :callback #(when (and (not (a.nil? state.win)) (nvim.win_is_valid state.win))
-                                         (nvim.win_close state.win true)
-                                         (set state.win nil))}))))
+                            :callback (remove-hover-window curbuf)}))))
 
 (defn handler [_ result ctx config]
   (when (= (nvim.get_current_buf) ctx.bufnr)
