@@ -3,6 +3,7 @@
              nvim aniseed.nvim}})
 
 (def- state {:win nil
+             :winbar ""
              :is-ending? false})
 
 (defn- get-buf-win [buf]
@@ -14,30 +15,34 @@
 (defn- set-winbar-msg [msg]
   (nvim.set_option_value :winbar msg {:win state.win}))
 
-(def- const {:load-str " %#DiagnosticInfo#󱥸 Loading LSP server... %#Normal#"
+(def- const {:load-str #(.. " %#DiagnosticInfo#󱥸 " $1 "%% Loading LSP server... %#Normal#")
              :ok-str " %#DiagnosticOk# LSP server loaded ! %#Normal#"
              :display-ok-duration 2500})
 
-(defn- lsp-load-start [win]
-  (set state.win win)
-  (set-winbar-msg (.. (get-winbar state.win) const.load-str)))
+(defn- lsp-load-start [percentage]
+  (set-winbar-msg (string.format "%s%s" state.winbar (const.load-str percentage))))
 
 (defn- lsp-load-end []
   (set state.is-ending? true)
-  (set-winbar-msg (vim.fn.substitute (get-winbar) const.load-str const.ok-str ""))
+  (set-winbar-msg (string.format "%s%s" state.winbar const.ok-str))
   (vim.defer_fn #(do
                    (set-winbar-msg (vim.fn.substitute (get-winbar) const.ok-str "" ""))
                    (set state.is-ending? false)
+                   (set state.winbar "")
                    (set state.win nil))
                 const.display-ok-duration))
 
 (defn- progress-handler [info]
-  (let [win (get-buf-win info.buf)]
+  (let [win (get-buf-win info.buf)
+        data (?. info.data :result :value)]
     (when (not state.is-ending?)
-      (case info.data.result.value.kind
-        :begin (when (a.nil? state.win)
-                 (lsp-load-start win))
-        :end (when (a.number? state.win)
-               (lsp-load-end))))))
+      (if (and data (not= data.kind "end"))
+        (do
+          (when (a.nil? state.win)
+            (set state.win win)
+            (set state.winbar (get-winbar win)))
+          (lsp-load-start data.percentage))
+        (when (a.number? state.win)
+          (lsp-load-end))))))
 
 (nvim.create_autocmd :LspProgress {:pattern "*" :callback progress-handler})

@@ -56,7 +56,6 @@
    :view {:width 30
           :adaptive_size true
           :side "right"
-          :hide_root_folder false
           :preserve_window_proportions true}
    :log {:enable false :types {:all true}}
    :renderer renderer-config
