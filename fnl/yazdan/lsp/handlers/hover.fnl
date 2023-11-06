@@ -20,7 +20,6 @@
      (set state.win nil)))
 
 (defn- open-popup-window [lines]
-  (do)
   (let [curbuf (nvim.get_current_buf)
         buf (nvim.create_buf false true)
         win (nvim.open_win 0 false (a.merge popup-default-cfg {:width (vim.fn.max (vim.tbl_map #(length $1) lines))
@@ -51,9 +50,9 @@
         (if (a.nil? contents)
           (vim.notify "No information available")
           (let [lines contents.value]
-            (if (a.nil? lines)
+            (if (or (a.nil? lines) (= "" lines))
               (vim.notify "No information available")
-              (open-popup-window (vim.split (vim.trim contents.value) "\n"))))))
+              (open-popup-window (vim.split (vim.trim lines) "\n"))))))
       (if (nvim.win_is_valid state.win)
         (nvim.set_current_win state.win)
         (do
