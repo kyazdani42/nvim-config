@@ -65,4 +65,3 @@
 (nvim.ex.command! "Dnd" ":!dragon %")
 
 (nvim.create_user_command :TrimEnd ":%s/ *$//g | noh" {:bang true})
-(nvim.create_user_command :StartTCR tcr.startup {:bang true :nargs 1 :complete "customlist,v:lua.require'yazdan.tcr'"})
