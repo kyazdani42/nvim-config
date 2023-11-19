@@ -15,7 +15,7 @@
 (defn- set-winbar-msg [msg]
   (nvim.set_option_value :winbar msg {:win state.win}))
 
-(def- const {:load-str #(.. " %#DiagnosticInfo#󱥸 " $1 "%% Loading LSP server... %#Normal#")
+(def- const {:load-str #(.. " %#DiagnosticInfo#󱥸 " (or $1 0) "%% Loading LSP server... %#Normal#")
              :ok-str " %#DiagnosticOk# LSP server loaded ! %#Normal#"
              :display-ok-duration 2500})
 

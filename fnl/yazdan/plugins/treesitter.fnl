@@ -14,13 +14,11 @@
    :indent {:enable true}
    :ensure_installed {}
    :auto_install true
+   :context_commentstring true
    :textobjects {:select {:enable true
                           :keymaps {"<leader>V" "@function.outer" ; replace with block.inner and block.outer when its supported in more languages
                                     "<leader>v" "@function.inner"}}
 
                  :swap {:enable true
                         :swap_next {"<leader>f" "@parameter.inner"} ; replace with block.inner when its supported in more languages
-                        :swap_previous {"<leader>a" "@parameter.inner"}}}
-
-   :context_commentstring {:enable true
-                           :enable_autocmd false}})
+                        :swap_previous {"<leader>a" "@parameter.inner"}}}})
