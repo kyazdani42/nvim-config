@@ -1,6 +1,7 @@
 (module yazdan.statusline
   {autoload {nvim aniseed.nvim
              a aniseed.core
+             tree nvim-tree.core
              const yazdan.statusline.constant
              fname yazdan.statusline.filename
              git yazdan.statusline.git}})
@@ -55,7 +56,7 @@
 (defn update []
   (let [bufnr (nvim.get_current_buf)]
     (match (nvim.buf_get_option bufnr :ft)
-      "NvimTree" (special-format TreeExplorer.absolute_path)
+      "NvimTree" (special-format (tree.get_cwd))
       "TelescopePrompt" (special-format "Telescope")
       "fugitiveblame" (special-format "Blamer")
       _ (let [mode (get-mode)

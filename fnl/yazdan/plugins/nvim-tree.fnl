@@ -55,7 +55,7 @@
              :excluded nil}
    :view {:width 30
           :adaptive_size true
-          :side "right"
+          :side "left"
           :preserve_window_proportions true}
    :log {:enable false :types {:all true}}
    :renderer renderer-config

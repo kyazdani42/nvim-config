@@ -32,15 +32,6 @@
    :lock {:icon ""
           :color "#117cad"
           :name "lock"}
-   :graphql {:icon "󰡷"
-             :color "#e632ad"
-             :name "graphql"}
-   :gql {:icon "󰡷"
-         :color "#e632ad"
-         :name "graphql"}
-   :fnl {:icon ""
-         :color "#fff3d7"
-         :name "Fennel"}
    :md {:icon ""
         :color "#89bbdd"
         :name "Md"}})

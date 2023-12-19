@@ -43,6 +43,9 @@
                             :buffer curbuf
                             :callback (remove-hover-window curbuf)}))))
 
+(defn- parse-lines [lines]
+  (string.gsub (vim.trim lines) "&nbsp;" " "))
+
 (defn handler [_ result ctx config]
   (when (= (nvim.get_current_buf) ctx.bufnr)
     (if (a.nil? state.win)
@@ -52,7 +55,7 @@
           (let [lines contents.value]
             (if (or (a.nil? lines) (= "" lines))
               (vim.notify "No information available")
-              (open-popup-window (vim.split (vim.trim lines) "\n"))))))
+              (open-popup-window (vim.split (parse-lines lines) "\n"))))))
       (if (nvim.win_is_valid state.win)
         (nvim.set_current_win state.win)
         (do
