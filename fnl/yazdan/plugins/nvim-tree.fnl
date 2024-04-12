@@ -40,7 +40,9 @@
                  :show_on_dirs false
                  :icons {:warning "" :error "" :info "" :hint ""}}
    :hijack_cursor true
-   :update_cwd    true
+   :sync_root_with_cwd true
+   :prefer_startup_root true
+   :respect_buf_cwd false
    :hijack_unnamed_buffer_when_opening true
    :hijack_directories {:enable true :auto_open true}
    :update_focused_file {:enable true
