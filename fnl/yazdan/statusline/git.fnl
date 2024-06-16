@@ -9,7 +9,7 @@
   (nvim.fn.fnameescape (nvim.fn.fnamemodify fname ":p:h")))
 
 (defn- format-cmd [cwd]
-  (string.format "git -C %s rev-parse --abbrev-ref HEAD" cwd))
+  (string.format "git -C '%s' rev-parse --abbrev-ref HEAD" cwd))
 
 (defn- git-rev-parse [fname]
   (string.gsub (nvim.fn.system (format-cmd (to-escaped-path fname))) "\n" ""))
@@ -23,7 +23,6 @@
 
 (defn- pad-branch-name [branch]
   (string.format " %s " branch))
-
 
 (defn- is-git-branch? [branch]
   (a.nil? (string.match branch "fatal")))
