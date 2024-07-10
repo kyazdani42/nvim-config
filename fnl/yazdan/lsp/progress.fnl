@@ -10,10 +10,13 @@
   (a.first (a.filter #(= (nvim.win_get_buf $1) buf) (nvim.list_wins))))
 
 (defn- get-winbar []
-  (nvim.get_option_value :winbar {:win state.win}))
+  (if (nvim.win_is_valid state.win)
+    (nvim.get_option_value :winbar {:win state.win})
+    ""))
 
 (defn- set-winbar-msg [msg]
-  (nvim.set_option_value :winbar msg {:win state.win}))
+  (when (nvim.win_is_valid state.win)
+    (nvim.set_option_value :winbar msg {:win state.win})))
 
 (def- const {:load-str #(.. " %#DiagnosticInfo#󱥸 " (or $1 0) "%% Loading LSP server... %#Normal#")
              :ok-str " %#DiagnosticOk# LSP server loaded ! %#Normal#"

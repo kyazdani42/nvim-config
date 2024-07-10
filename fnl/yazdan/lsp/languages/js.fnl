@@ -6,10 +6,13 @@
 
 (defn setup [capabilities]
   (when (= 1 (vim.fn.executable :typescript-language-server))
-    (lspconfig.tsserver.setup {:capabilities capabilities
-                               :cmd [:typescript-language-server :--stdio]
-                               :filetypes filetypes
-                               :on_attach (lambda [client bufnr]
-                                            (set client.server_capabilities.documentFormattingProvider false)
-                                            (set client.server_capabilities.documentRangeFormattingProvider false)
-                                            (utils.on_attach client bufnr))})))
+    (do
+      (lspconfig.eslint.setup {})
+      (lspconfig.tailwindcss.setup {})
+      (lspconfig.tsserver.setup {:capabilities capabilities
+                                 :cmd [:typescript-language-server :--stdio]
+                                 :filetypes filetypes
+                                 :on_attach (lambda [client bufnr]
+                                              (set client.server_capabilities.documentFormattingProvider false)
+                                              (set client.server_capabilities.documentRangeFormattingProvider false)
+                                              (utils.on_attach client bufnr))}))))
