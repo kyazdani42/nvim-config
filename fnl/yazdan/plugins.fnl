@@ -10,8 +10,6 @@
   (let [use (override-use u)]
     (use :wbthomason/packer.nvim)
     (use :Olical/aniseed)
-    (use :Olical/conjure
-         {:config #(require :yazdan.plugins.conjure)})
     (use :eraserhd/parinfer-rust
          {:run "cargo build --release"})
 
@@ -61,7 +59,6 @@
     (use :hrsh7th/cmp-buffer)
     (use :hrsh7th/cmp-path)
     (use :hrsh7th/cmp-nvim-lsp)
-    (use :PaterJason/cmp-conjure)
 
     ; tpope & git
     (use :tpope/vim-surround)

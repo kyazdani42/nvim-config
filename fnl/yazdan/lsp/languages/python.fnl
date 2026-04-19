@@ -1,7 +1,23 @@
 (module yazdan.lsp.languages.python
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup []
-  (lspconfig.pyright.setup {:on_attach utils.on_attach
-                            :single_file_support true}))
+  (vim.lsp.config :pylsp {:on_attach utils.on_attach}
+                    :settings {:pylsp {:black {:enabled true}
+                                       :autopep8 {:enabled false}
+                                       :yapf {:enabled false}
+                                       ; linter options
+                                       :flake8 {:enabled true}
+                                       :pylint {:enabled false}
+                                       :ruff  {:enabled false}
+                                       :pyflakes {:enabled false}
+                                       :pycodestyle  {:enabled false}
+                                       ; type checker
+                                       :pylsp_mypy {:enabled true
+                                                    :report_progress true
+                                                    :live_mode false}
+                                       ; auto-completion options
+                                       :jedi_completion {:fuzzy true}
+                                       ; import sorting
+                                       :isort {:enabled true}}})
+  (vim.lsp.enable :pylsp))

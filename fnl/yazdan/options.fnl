@@ -38,5 +38,5 @@
 (set vim.opt.laststatus 3)
 (set vim.opt.timeoutlen 500)
 (set vim.g.mapleader "\\")
-(set vim.opt.winbar " ")
+(set vim.opt.winbar "")
 (nvim.ex.set "shortmess+=c")

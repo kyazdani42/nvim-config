@@ -1,6 +1,6 @@
 (module yazdan.lsp.languages.clojure
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup []
-  (lspconfig.clojure_lsp.setup {:on_attach utils.on_attach}))
+  (vim.lsp.config :clojure_lsp {:on_attach utils.on_attach})
+  (vim.lsp.enable :clojure_lsp))

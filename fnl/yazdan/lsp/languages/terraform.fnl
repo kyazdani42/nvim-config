@@ -1,6 +1,6 @@
 (module yazdan.lsp.languages.terraform
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup []
-  (lspconfig.terraformls.setup {:on_attach utils.on_attach}))
+  (vim.lsp.enable :terraformls)
+  (vim.lsp.config :terraformls {:on_attach utils.on_attach}))

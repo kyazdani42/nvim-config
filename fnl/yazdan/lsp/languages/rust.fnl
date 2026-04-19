@@ -1,8 +1,8 @@
 (module yazdan.lsp.languages.rust
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup [cap]
-  (lspconfig.rust_analyzer.setup
+  (vim.lsp.config :rust_analyzer
     {:on_attach utils.on_attach
-     :capabilities cap}))
+     :capabilities cap})
+  (vim.lsp.enable :rust_analyzer))

@@ -1,6 +1,6 @@
 (module yazdan.lsp.languages.go
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup []
-  (lspconfig.gopls.setup {:on_attach utils.on_attach}))
+  (vim.lsp.config :gopls {:on_attach utils.on_attach})
+  (vim.lsp.enable :gopls))

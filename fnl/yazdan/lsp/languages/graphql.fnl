@@ -1,7 +1,7 @@
 (module yazdan.lsp.languages.graphql
-  {autoload {lspconfig lspconfig
-             utils yazdan.lsp.utils}})
+  {autoload {utils yazdan.lsp.utils}})
 
 (defn setup []
-  (lspconfig.graphql.setup {:on_attach utils.on_attach
-                            :filetypes [:graphql]}))
+  (vim.lsp.config :graphql {:on_attach utils.on_attach
+                            :filetypes [:graphql]})
+  (vim.lsp.enable :graphql))

@@ -4,12 +4,10 @@
              cmp-nvim-lsp cmp_nvim_lsp ; needed to load cmp
              utils yazdan.utils
              hover yazdan.lsp.handlers.hover
-             definition yazdan.lsp.handlers.definition
              signature yazdan.lsp.handlers.signature}
    require {_ yazdan.lsp.diagnostics
             _ yazdan.lsp.progress}})
 
-(set vim.lsp.handlers.textDocument/definition definition.handler)
 (set vim.lsp.handlers.textDocument/hover hover.handler)
 (set vim.lsp.handlers.textDocument/signatureHelp signature.handler)
 

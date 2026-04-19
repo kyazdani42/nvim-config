@@ -16,7 +16,8 @@
                                       :folder_arrow true
                                       :git true}
                                :glyphs {:default ""
-                                        :folder {:default "" :open ""}
+                                        :folder {:default ""
+                                                 :open ""}
                                         :git {:unstaged "✗"
                                               :staged "✓"
                                               :unmerged ""
@@ -50,8 +51,6 @@
                          :ignore_list ["fzf" "help" "git"]}
    :on_attach on-tree-attach
    :ignore_buf_on_tab_change [:git :man :help :Neogit "--graph" :Mailbox]
-   :system_open {:cmd nil
-                 :args {}}
    :filters {:dotfiles false
              :custom ["\\.git$"]
              :excluded nil}
