@@ -1,6 +1,6 @@
 (module yazdan.plugins.colorizer
-  {autoload {colorizer colorizer}})
+  {autoload {nvim-highlight-colors nvim-highlight-colors}})
 
 (vim.schedule (lambda []
                 (when (vim.api.nvim_get_option :termguicolors)
-                  (colorizer.setup))))
+                  (nvim-highlight-colors.setup {}))))

@@ -23,7 +23,8 @@
          {:config #(require :yazdan.plugins.nvim-tree)})
 
     (use "nvim-treesitter/nvim-treesitter"
-         {:config #(require :yazdan.plugins.treesitter)})
+         {:branch :main 
+          :config #(require :yazdan.plugins.treesitter)})
 
     ; templating tag sync
     (use :windwp/nvim-ts-autotag
@@ -38,7 +39,7 @@
     (use :nvim-telescope/telescope.nvim
          {:config #(require :yazdan.plugins.telescope)})
 
-    (use :norcalli/nvim-colorizer.lua
+    (use :brenoprata10/nvim-highlight-colors
          {:config #(require :yazdan.plugins.colorizer)})
 
     (use :neovim/nvim-lspconfig

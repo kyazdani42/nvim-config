@@ -54,7 +54,7 @@
 (nmap "<C-b>" (lambda [] (telescope.buffers)))
 (nmap "<C-t>" "<cmd>TLiveGrep<CR>")
 
-(nmap "R" "<cmd>write | edit | TSBufEnable highlight<CR>")
+(nmap "R" "<cmd>write | edit<CR>")
 
 (nmap "++" "<Plug>kommentary_line_default" silent)
 (vmap "++" "<Plug>kommentary_visual_default" silent)
@@ -62,6 +62,6 @@
 (nvim.ex.cabbrev "W" "w")
 (nvim.ex.cabbrev "Xa" "xa")
 (nvim.ex.cabbrev "X" "x")
-(nvim.ex.command! "Dnd" ":!dragon %")
+(nvim.ex.command! "Dnd" ":!dragon-drop %")
 
 (nvim.create_user_command :TrimEnd ":%s/ *$//g | noh" {:bang true})
