@@ -7,12 +7,10 @@
   (vim.keymap.set :n lhs cb {:buffer bufnr :remap false :silent true}))
 
 (defn- attach-mappings [bufnr]
-  (nmap bufnr "<leader>hs" gitsigns.preview_hunk)
-  (nmap bufnr "<leader>ha" gitsigns.stage_hunk)
-  (nmap bufnr "<leader>hu" gitsigns.undo_stage_hunk)
-  (nmap bufnr "<leader>hr" gitsigns.reset_hunk)
-  (nmap bufnr "<leader>hn" gitsigns.next_hunk)
-  (nmap bufnr "<leader>hn" gitsigns.prev_hunk))
+  (nmap bufnr "<leader>gg" gitsigns.preview_hunk)
+  (nmap bufnr "<leader>ga" gitsigns.stage_hunk)
+  (nmap bufnr "<leader>gn" gitsigns.next_hunk)
+  (nmap bufnr "<leader>gp" gitsigns.prev_hunk))
 
 (defn- on-gitsigns-attach [bufnr]
   (if (not (a.nil? (string.match (nvim.buf_get_name bufnr) "NvimTree")))
